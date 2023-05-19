@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("progetto");
         //Scene scene = new Scene(fxmlLoader.load(), 500, 400);
         primaryStage.setScene(new Scene(root));
+        System.out.println("ciao");
         primaryStage.show();
 
     }
