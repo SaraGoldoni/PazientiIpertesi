@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+    <children>
+        <Label layoutX="14.0" layoutY="75.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" />
+        <TextField fx:id="SBP" layoutX="14.0" layoutY="37.0" prefHeight="25.0" prefWidth="556.0" />
+        <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" />
+        <TextField fx:id="DBP" layoutX="14.0" layoutY="98.0" prefHeight="25.0" prefWidth="556.0" />
+        <Label layoutX="14.0" layoutY="246.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci dati relativi al farmaco assunto:" />
+        <Label layoutX="14.0" layoutY="147.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci eventuali sintomi:" />
+        <TextArea fx:id="Sintomo" layoutX="10.0" layoutY="168.0" prefHeight="64.0" prefWidth="556.0" />
+        <Label layoutX="44.0" layoutY="271.0" prefHeight="17.0" prefWidth="126.0" text="Nome del farmaco:" />
+        <TextField fx:id="NomeFarmaco" layoutX="224.0" layoutY="267.0" prefHeight="0.0" prefWidth="137.0" />
+        <Label layoutX="44.0" layoutY="305.0" prefHeight="17.0" prefWidth="126.0" text="Giorno:" />
+        <Label layoutX="44.0" layoutY="334.0" prefHeight="17.0" prefWidth="126.0" text="Ora:" />
+        <Label layoutX="44.0" layoutY="361.0" prefHeight="17.0" prefWidth="126.0" text="Quantità:" />
+        <TextField fx:id="GiornoFarmaco" layoutX="224.0" layoutY="301.0" prefHeight="17.0" prefWidth="137.0" />
+        <TextField fx:id="OraFarmaco" layoutX="224.0" layoutY="330.0" prefHeight="25.0" prefWidth="137.0" />
+        <TextField fx:id="QuantitaFarmaco" layoutX="224.0" layoutY="357.0" prefHeight="17.0" prefWidth="137.0" />
+    </children>
+</AnchorPane>
