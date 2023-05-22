@@ -36,7 +36,7 @@ public class DatabaseConnection {
             // primo campo -> link del db
             // secondo campo -> username
             // terzo campo -> password
-            c = DriverManager.getConnection("jdbc:postgresql://localhost:5433/postgres", "postgres", "progetto23");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5433/PazientiIpertesi", "postgres", "progetto23");
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Connessione al database fallita!");

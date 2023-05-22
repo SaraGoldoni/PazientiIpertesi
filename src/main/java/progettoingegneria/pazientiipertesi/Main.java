@@ -15,7 +15,6 @@ public class Main extends Application {
         //Scene scene = new Scene(fxmlLoader.load(), 500, 400);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        System.out.println("ciao");
     }
 
     public static void main(String[] args) {

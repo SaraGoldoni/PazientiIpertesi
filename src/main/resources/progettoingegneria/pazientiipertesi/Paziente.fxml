@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="636.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.PazController">
+<AnchorPane prefHeight="636.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
         <Button layoutX="112.0" layoutY="76.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="571.0" text="Inserisci dati giornalieri">
             <font>

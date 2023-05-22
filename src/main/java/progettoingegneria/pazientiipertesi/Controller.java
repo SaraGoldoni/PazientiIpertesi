@@ -33,14 +33,14 @@ public class Controller {
         Connection c = conn.link();
         try (Statement st = c.createStatement()) {
             ResultSet rs = null;
-            rs = st.executeQuery("SELECT * FROM progetto.Login");
+            rs = st.executeQuery("SELECT * FROM PazientiIpertesi.Login");
             String nomeutente, pass;
             nomeutente = username.getText();
             pass = password.getText();
             while (rs.next()) {
                 if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
                     if (rs.getInt(3) == 1) {
-                        root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("Medico.fxml"));
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
@@ -48,7 +48,7 @@ public class Controller {
                         stage.show();
 
                     } else {
-                        root = FXMLLoader.load(getClass().getResource("loginpaz.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("Paziente.fxml"));
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
