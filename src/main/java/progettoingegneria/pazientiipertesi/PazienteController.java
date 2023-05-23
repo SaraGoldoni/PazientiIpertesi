@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,21 +32,23 @@ public class PazienteController {
     private TextField SBP;
     @FXML
     private TextField DBP;
-
+    private TextField Sintomi;
+    private TextField NomeFarmaco;
+    DatabaseConnection conn = new DatabaseConnection();
+    Connection c = conn.link();
     public void InsertIntoMemo(ActionEvent event) throws SQLException {
-        DatabaseConnection conn = new DatabaseConnection();
-        Connection c = conn.link();
-        try (Statement st = c.createStatement()) {
-            ResultSet rs = null;
-            PreparedStatement pstmt= null;
-            String query = ("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora)\" + \"VALUES (?, ?, ?, ?,?,?,?");
-            pstmt = c.prepareCall(query);
+
+        String query = ("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora)\" + \"VALUES (?, ?, ?, ?, ?, ?, ?");
+        try (PreparedStatement pstmt = c.prepareStatement(query)) {
+            //PreparedStatement pstmt= null;
             String pressioneMassima = SBP.getText();
             String pressioneMinima = DBP.getText();
+            String sintomo = Sintomi.getText();
+            String Farmaco = NomeFarmaco.getText();
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
-            pstmt.setString(3, ); // consider setInt() might be more appropriate
-            pstmt.setString(4,);
+            pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
+            pstmt.setString(4, Farmaco);
             pstmt.setString(5,);
             pstmt.setString(6,);
             pstmt.setString(7,);
