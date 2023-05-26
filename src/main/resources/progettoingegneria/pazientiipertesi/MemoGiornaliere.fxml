@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,9 +9,9 @@
 <AnchorPane prefHeight="647.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
         <Label layoutX="14.0" layoutY="75.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" />
-        <TextField fx:id="SBP" layoutX="14.0" layoutY="37.0" prefHeight="25.0" prefWidth="556.0" />
+        <TextField fx:id="SBP" layoutX="14.0" layoutY="37.0" prefHeight="25.0" prefWidth="556.0" promptText="Massima" />
         <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" />
-        <TextField fx:id="DBP" layoutX="14.0" layoutY="98.0" prefHeight="25.0" prefWidth="556.0" />
+        <TextField fx:id="DBP" layoutX="14.0" layoutY="98.0" prefHeight="25.0" prefWidth="556.0" promptText="Minima" />
         <Label layoutX="14.0" layoutY="267.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci dati relativi al farmaco assunto:">
          <font>
             <Font size="18.0" />
@@ -22,7 +21,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-        <TextField fx:id="NomeFarmaco" layoutX="209.0" layoutY="308.0" onAction="#InsertIntoMemo" prefHeight="32.0" prefWidth="307.0" />
+        <TextField fx:id="NomeFarmaco" layoutX="209.0" layoutY="308.0" prefHeight="32.0" prefWidth="307.0" />
         <Label layoutX="34.0" layoutY="354.0" prefHeight="17.0" prefWidth="126.0" text="Giorno:">
          <font>
             <Font size="18.0" />
@@ -35,10 +34,10 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-        <TextField fx:id="OraFarmaco" layoutX="209.0" layoutY="403.0" onAction="#InsertIntoMemo" prefHeight="32.0" prefWidth="307.0" />
-      <Button fx:id="Inserisci" layoutX="699.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#immetti" text="Inserisci" />
-      <DatePicker fx:id="DataFarmaco" layoutX="208.0" layoutY="352.0" onAction="#InsertIntoMemo" prefHeight="32.0" prefWidth="307.0" />
-      <TextField fx:id="quantita" layoutX="208.0" layoutY="450.0" onAction="#InsertIntoMemo" prefHeight="32.0" prefWidth="307.0" />
-      <TextField fx:id="Sintomi" layoutX="14.0" layoutY="169.0" onAction="#InsertIntoMemo" prefHeight="25.0" prefWidth="556.0" />
+        <TextField fx:id="OraFarmaco" layoutX="209.0" layoutY="403.0" prefHeight="32.0" prefWidth="307.0" />
+      <Button fx:id="Inserisci" layoutX="699.0" layoutY="562.0" mnemonicParsing="false" onAction="#InsertIntoMemo" text="Inserisci" />
+      <TextField fx:id="quantita" layoutX="208.0" layoutY="450.0" prefHeight="32.0" prefWidth="307.0" promptText="Numero Pastiglie" />
+      <TextField fx:id="Sintomi" layoutX="14.0" layoutY="169.0" prefHeight="25.0" prefWidth="556.0" />
+      <TextField fx:id="DataFarmaco" layoutX="209.0" layoutY="352.0" prefHeight="32.0" prefWidth="307.0" promptText="gg/mm/aaaa" />
     </children>
 </AnchorPane>

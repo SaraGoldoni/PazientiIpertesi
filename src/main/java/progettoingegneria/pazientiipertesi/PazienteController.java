@@ -44,7 +44,7 @@ public class PazienteController {
     @FXML
     private TextField quantita;
     @FXML
-    private DatePicker DataFarmaco;
+    private TextField DataFarmaco;
     @FXML
     private TextField OraFarmaco;
     DatabaseConnection conn = new DatabaseConnection();
@@ -52,33 +52,38 @@ public class PazienteController {
 
 
     @FXML
-    private void InsertIntoMemo() throws SQLException {
-        String query = ("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora)\" + \"VALUES (?, ?, ?, ?, ?, ?, ?");
-        try (PreparedStatement pstmt = c.prepareStatement(query)) {
-
+    public void InsertIntoMemo() throws SQLException {
+        //String query = ();
+        try (PreparedStatement pstmt = c.prepareStatement("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora)'VALUES' (?, ?, ?, ?, ?, ?, ?")) {
+            pstmt.clearParameters();
             String pressioneMassima = SBP.getText();
             String pressioneMinima = DBP.getText();
             String sintomo = Sintomi.getText();
             String Farmaco = NomeFarmaco.getText();
             String pillole = quantita.getText();
-            LocalDate d= DataFarmaco.getValue();
+            //java.sql.Date d = java.sql.Date.valueOf(DataFarmaco.getValue());
+            String data = DataFarmaco.getText();
             String ora = OraFarmaco.getText();
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
             pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
             pstmt.setString(4, Farmaco);
-            pstmt.setInt(5, Integer.parseInt(pillole));
-            pstmt.setDate(6, Date.valueOf(d));
-            pstmt.setTime(7, Time.valueOf(ora));
+            pstmt.setString(5, pillole);
+            pstmt.setString(6, data);
+            pstmt.setString(7, " ");
 
-            int status = pstmt.executeUpdate();
+             pstmt.executeUpdate();
+
         }
     }
 
-    public void immetti(MouseEvent mouseEvent) throws SQLException {
-        InsertIntoMemo();
-    }
 }
+            /*
+            java.sql.Date theDate = java.sql.Date.valueOf(texto3.getValue());
+                ps.setDate(3, theDate);
+             */
+
+
 
 /*try ( PreparedStatement pst = con.prepareStatement (
                     " INSERT INTO Spese (id, data , voce , importo ) VALUES (?, ? , ? , ?), (?, ? ,? ,?) ,(?, ? ,? ,?) ,(?, ? ,? ,?); " ) ) {
