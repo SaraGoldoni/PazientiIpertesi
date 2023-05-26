@@ -54,7 +54,7 @@ public class PazienteController {
     @FXML
     public void InsertIntoMemo() throws SQLException {
         //String query = ();
-        try (PreparedStatement pstmt = c.prepareStatement("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora)'VALUES' (?, ?, ?, ?, ?, ?, ?")) {
+        try (PreparedStatement pstmt = c.prepareStatement("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, ora) VALUES (?, ?, ?, ?, ?, ?, ?")) {
             pstmt.clearParameters();
             String pressioneMassima = SBP.getText();
             String pressioneMinima = DBP.getText();
