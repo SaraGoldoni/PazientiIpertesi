@@ -1,6 +1,5 @@
 package progettoingegneria.pazientiipertesi;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -26,7 +26,8 @@ public class PazienteController {
     private Button SegnalazionePaziente;
 
     @FXML
-    private void SwitchToMemo(ActionEvent event) throws IOException {
+    public void SwitchToMemo(ActionEvent event) throws IOException {
+
         root = FXMLLoader.load(getClass().getResource("MemoGiornaliere.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -50,11 +51,13 @@ public class PazienteController {
     private TextField OraFarmaco;
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
+
     @FXML
     public void InsertIntoMemo() throws SQLException {
-        //String query = ();
-        try (PreparedStatement pstmt = c.prepareStatement("INSERT INTO Memo(SBP, DBP, sintomi, farmaco, quantità, data, paziente) VALUES (?, ?, ?, ?, ?, ?, ?)")){
-            pstmt.clearParameters();
+
+        String query = ("INSERT INTO pazientiipertesi.memo(SBP, DBP, sintomi, farmaco, quantità, data, paziente) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        try (PreparedStatement pstmt = c.prepareStatement(query)){
+            c.setAutoCommit(false);
             String pressioneMassima = SBP.getText();
             String pressioneMinima = DBP.getText();
             String sintomo = Sintomi.getText();
@@ -63,17 +66,29 @@ public class PazienteController {
             //java.sql.Date d = java.sql.Date.valueOf(DataFarmaco.getValue());
             String data = DataFarmaco.getText();
             String ora = OraFarmaco.getText();
+
+
+
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
             pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
             pstmt.setString(4, Farmaco);
             pstmt.setString(5, pillole);
             pstmt.setString(6, data);
-            pstmt.setString(7, "AB123 ");
-            
+            pstmt.setString(7, "AB123");
+
             pstmt.executeUpdate();
+            c.commit();
         }
     }
+
+
 }
+/*
+* con.setAutoCommit(false);
+stmt = con.createStatement();
+stmt.executeUpdate(query);
+con.commit();
+* */
 
 
