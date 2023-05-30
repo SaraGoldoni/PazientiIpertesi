@@ -75,7 +75,7 @@ public class PazienteController {
             pstmt.setString(4, Farmaco);
             pstmt.setString(5, pillole);
             pstmt.setString(6, data);
-            pstmt.setString(7, "AB123");
+            pstmt.setString(7, Controller.getNomeUtente());
 
             pstmt.executeUpdate();
             c.commit();

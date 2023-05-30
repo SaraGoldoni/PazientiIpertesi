@@ -29,9 +29,18 @@ public class Controller {
     private PasswordField password;
     @FXML
     private Button Accedi;
-    String nomeutente;
+    static String nomeutente;
+
+
+
+
+
+    public static String getNomeUtente() {
+        return nomeutente;
+    }
+
     @FXML
-    private String ControlloLogin(ActionEvent event) throws SQLException {
+    private void ControlloLogin(ActionEvent event) throws SQLException {
          DatabaseConnection conn = new DatabaseConnection();
         Connection c = conn.link();
         try (Statement st = c.createStatement()) {
@@ -39,8 +48,9 @@ public class Controller {
             rs = st.executeQuery("SELECT * FROM PazientiIpertesi.Login");
             String pass;
             nomeutente = username.getText();
+            System.out.println(nomeutente);
             pass = password.getText();
-            Paziente user1 = new Paziente(nomeutente, "Mario", "Rossi");
+            //Paziente user1 = new Paziente(nomeutente, "Mario", "Rossi");
             //query
             //SELECT nome, cognome FROM Paziente where nomeutente = 'nomeutente'
             while (rs.next()) {
@@ -66,8 +76,9 @@ public class Controller {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        return nomeutente;
+
     }
+
 }
 
 //FXMLLoader loader = new FXMLLoader(getClass().getResource("Paziente.fxml"));
