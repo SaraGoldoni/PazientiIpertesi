@@ -52,10 +52,13 @@ public class PazienteController {
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
 
+    /**
+     * Inserisce nella tabella di memorizzazione le rilevazioni giornaliere dell'utente.
+     */
     @FXML
     public void InsertIntoMemo() throws SQLException {
 
-        String query = ("INSERT INTO pazientiipertesi.memo(SBP, DBP, sintomi, farmaco, quantità, data, paziente) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        String query = ("INSERT INTO pazientiipertesi.memo(SBP, DBP, sintomi, farmaco, quantità, data, idpaziente) VALUES (?, ?, ?, ?, ?, ?, ?)");
         try (PreparedStatement pstmt = c.prepareStatement(query)){
             c.setAutoCommit(false);
             String pressioneMassima = SBP.getText();

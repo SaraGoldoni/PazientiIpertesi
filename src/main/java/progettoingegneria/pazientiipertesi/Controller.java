@@ -38,6 +38,13 @@ public class Controller {
     public static String getNomeUtente() {
         return nomeutente;
     }
+/**
+ * Alla pressione del tasto Login fa il controllo delle credenziali inserite nel form.
+ * Se sono corrette controlla se appartengono ad un medico o ad un paziente.
+ * Switch alla pagina corretta.
+ * @param event oggetto della classe ActionEvent
+ *
+ */
 
     @FXML
     private void ControlloLogin(ActionEvent event) throws SQLException {
