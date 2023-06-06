@@ -13,15 +13,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
+import java.util.EventObject;
 
 public class Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
     Alert alert = new Alert(Alert.AlertType.ERROR);
-
+    ActionEvent event;
 
     @FXML
     private TextField username;
@@ -37,6 +39,16 @@ public class Controller {
 
     public static String getNomeUtente() {
         return nomeutente;
+    }
+
+
+
+    public void Switch(String s) throws IOException {
+        root = FXMLLoader.load(getClass().getResource(s));
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 /**
  * Alla pressione del tasto Login fa il controllo delle credenziali inserite nel form.
@@ -57,26 +69,31 @@ public class Controller {
             nomeutente = username.getText();
             System.out.println(nomeutente);
             pass = password.getText();
-            //Paziente user1 = new Paziente(nomeutente, "Mario", "Rossi");
-            //query
-            //SELECT nome, cognome FROM Paziente where nomeutente = 'nomeutente'
+
             while (rs.next()) {
-                if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
+                if (rs.getString(1).equals("00000")&&(rs.getString(2).equals(pass))){
+                    //Switch(event,"Responsabile.fxml");
+                    root = FXMLLoader.load(getClass().getResource("Responsabile.fxml"));
+                    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                } else if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
                     if (rs.getInt(3) == 1) {
                         root = FXMLLoader.load(getClass().getResource("Medico.fxml"));
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
+                        //Switch(event,"Medico.fxml");
 
                     } else {
                         root = FXMLLoader.load(getClass().getResource("Paziente.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
-                        //root.setUserData();
                         stage.setScene(scene);
                         stage.show();
-
                     }
                 }
             }
@@ -93,3 +110,9 @@ public class Controller {
 //PazienteController pazienteController = loader.getController();
 //pazienteController.SwitchToMemo(nomeutente);
 
+/* root = FXMLLoader.load(getClass().getResource("Paziente.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        //root.setUserData();
+                        stage.setScene(scene);
+                        stage.show();*/

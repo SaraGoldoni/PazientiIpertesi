@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="620.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.Controller">
+   <children>
+      <MenuButton layoutX="60.0" layoutY="60.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="123.0" text="Utente">
+        <items>
+            <CheckMenuItem mnemonicParsing="false" text="Paziente" />
+            <CheckMenuItem fx:id="medico" mnemonicParsing="false" text="Medico" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
