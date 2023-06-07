@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="581.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
+   <children>
+      <Label layoutX="58.0" layoutY="14.0" text="Dati Paziente:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -5,15 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ResponsabileController {
-    public void InsertPaziente(ActionEvent event){
-
+    public void NewPaziente(ActionEvent event) throws IOException {
+        Controller.Switch("ResponsabilePaziente.fxml",event);
     }
-    public void InsertMedico(ActionEvent event){
-
+    public void NewMedico(ActionEvent event) throws IOException {
+        Controller.Switch("ResponsabileMedico.fxml", event);
     }
 
 }
