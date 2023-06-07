@@ -115,6 +115,10 @@ public class PazienteController implements Initializable{
 
             pstmt.executeUpdate();
             c.commit();
+
+            Controller.Switch("Paziente.fxml",event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
