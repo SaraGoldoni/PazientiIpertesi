@@ -16,6 +16,12 @@ public class ResponsabileController {
     public void NewMedico(ActionEvent event) throws IOException {
         Controller.Switch("ResponsabileMedico.fxml", event);
     }
+    public void InsertPaziente(ActionEvent event) throws IOException {
+        Controller.Switch("Responsabile.fxml",event);
+    }
+    public void InsertMedico(ActionEvent event) throws IOException {
+        Controller.Switch("Responsabile.fxml",event);
+    }
 
 }
 
