@@ -42,7 +42,7 @@ public class PazienteController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
-        choiceBox.getItems().add("farmaco1");
+        choiceBox.getItems().addAll("farmaco1","farmaco2","farmaco3");
         choiceBox.setOnAction(this::getFarmaco);
     }
 
@@ -74,7 +74,6 @@ public class PazienteController implements Initializable{
     private TextField NomeFarmaco;
     @FXML
     private TextField quantita;
-
     @FXML
     private TextField OraFarmaco;
 
@@ -94,8 +93,10 @@ public class PazienteController implements Initializable{
             String pressioneMassima = SBP.getText();
             String pressioneMinima = DBP.getText();
             String sintomo = Sintomi.getText();
-            String Farmaco = NomeFarmaco.getText();
+            //String Farmaco = NomeFarmaco.getText();
             String pillole = quantita.getText();
+            String F = getFarmaco(event);
+            //System.out.println(F);
             //java.sql.Date d = java.sql.Date.valueOf(DataFarmaco.getValue());
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
@@ -107,7 +108,7 @@ public class PazienteController implements Initializable{
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
             pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
-            pstmt.setString(4, Farmaco);
+            pstmt.setString(4, F);
             pstmt.setString(5, pillole);
             pstmt.setString(6, formatter.format(date));
             pstmt.setString(7, Controller.getNomeUtente());
