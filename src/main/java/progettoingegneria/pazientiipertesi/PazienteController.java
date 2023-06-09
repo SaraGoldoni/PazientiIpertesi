@@ -103,7 +103,7 @@ public class PazienteController implements Initializable{
             String ora = OraFarmaco.getText();
 
 
-
+//inserire il campo ora nella tabella memo
 
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
