@@ -87,31 +87,29 @@ public class PazienteController implements Initializable{
     @FXML
     public void InsertIntoMemo(ActionEvent event) throws SQLException {
 
-        String query = ("INSERT INTO pazientiipertesi.memo(SBP, DBP, sintomi, farmaco, quantità, data, idpaziente) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        String query = ("INSERT INTO pazientiipertesi.Pressione(SBP, DBP, data, idpaziente) VALUES (?, ?, ?, ?)");
         try (PreparedStatement pstmt = c.prepareStatement(query)){
             c.setAutoCommit(false);
-            String pressioneMassima = SBP.getText();
-            String pressioneMinima = DBP.getText();
+            int pressioneMassima = Integer.parseInt(SBP.getText());
+            int pressioneMinima = Integer.parseInt(DBP.getText());
             String sintomo = Sintomi.getText();
             //String Farmaco = NomeFarmaco.getText();
             String pillole = quantita.getText();
             String F = getFarmaco(event);
-            //System.out.println(F);
-            //java.sql.Date d = java.sql.Date.valueOf(DataFarmaco.getValue());
+            
+            
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             String ora = OraFarmaco.getText();
 
 
+
 //inserire il campo ora nella tabella memo
 
-            pstmt.setString(1, pressioneMassima);
-            pstmt.setString(2, pressioneMinima);
-            pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
-            pstmt.setString(4, F);
-            pstmt.setString(5, pillole);
-            pstmt.setString(6, formatter.format(date));
-            pstmt.setString(7, Controller.getNomeUtente());
+            pstmt.setInt(1, pressioneMassima);
+            pstmt.setInt(2, pressioneMinima);
+            pstmt.setString(3, formatter.format(date));
+            pstmt.setString(4, Controller.getCFPaziente());
 
             pstmt.executeUpdate();
             c.commit();
@@ -132,7 +130,11 @@ con.commit();
 * */
 
 
-
+/*
+*    pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
+            pstmt.setString(4, F);
+            pstmt.setString(5, pillole);
+* */
 
 
 

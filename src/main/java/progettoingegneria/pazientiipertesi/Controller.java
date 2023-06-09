@@ -35,11 +35,26 @@ public class Controller {
 
 
 
+
     public static String getNomeUtente() {
         return nomeutente;
     }
+    // fare query che recupera il codiceFiscale
+    public static String getCFPaziente() throws SQLException {
+        DatabaseConnection conn = new DatabaseConnection();
+        Connection c = conn.link();
+        String CF=getNomeUtente();
+
+        ResultSet rs;
+        String query = ("SELECT paziente FROM PazientiIpertesi.Login where NomeUtente=?");
+        PreparedStatement pstmt = c.prepareStatement(query);
+            pstmt.setString(1, CF);
+            rs=pstmt.executeQuery();
+            rs.next();
+            return rs.getString(1);
 
 
+    }
 
     public static void Switch(String s, ActionEvent event) throws IOException {
         Stage stage;
