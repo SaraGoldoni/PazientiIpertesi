@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
+<AnchorPane prefHeight="661.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <Button layoutX="214.0" layoutY="84.0" mnemonicParsing="false" onAction="#InserisciTerapia" prefHeight="98.0" prefWidth="286.0" text="Inserisci nuova terapia">
+      <Button layoutX="326.0" layoutY="97.0" mnemonicParsing="false" onAction="#InserisciTerapia" prefHeight="98.0" prefWidth="306.0" text="Inserisci nuova terapia">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Button layoutX="214.0" layoutY="241.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="98.0" prefWidth="286.0" text="Modifica terapia">
+      <Button layoutX="326.0" layoutY="281.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="98.0" prefWidth="306.0" text="Modifica terapia">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Button layoutX="214.0" layoutY="384.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="98.0" prefWidth="286.0" text="Visualizza dati paziente">
+      <Button layoutX="326.0" layoutY="468.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="98.0" prefWidth="305.0" text="Visualizza dati paziente">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="57.0" layoutY="33.0" text="Scegliere un'opzione:">
          <font>
             <Font size="24.0" />
          </font>
-      </Button>
+      </Label>
    </children>
 </AnchorPane>

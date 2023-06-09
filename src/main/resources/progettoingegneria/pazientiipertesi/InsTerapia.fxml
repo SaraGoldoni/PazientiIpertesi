@@ -6,10 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="648.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <Label layoutX="14.0" layoutY="28.0" text="Inserimento Nuova terapia" />
+      <Label layoutX="242.0" layoutY="58.0" text="Inserimento Nuova terapia">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
       <Label layoutX="25.0" layoutY="134.0" prefHeight="44.0" prefWidth="206.0" text="Codice Fiscale Paziente:">
          <font>
             <Font size="18.0" />

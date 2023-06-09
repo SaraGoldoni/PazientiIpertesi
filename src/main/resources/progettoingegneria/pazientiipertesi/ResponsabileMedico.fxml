@@ -14,6 +14,29 @@
          </font>
       </Label>
       <Button layoutX="517.0" layoutY="439.0" mnemonicParsing="false" onAction="#InsertMedico" text="Inserisci" />
-      <TextField layoutX="118.0" layoutY="97.0" />
+      <TextField layoutX="305.0" layoutY="102.0" />
+      <Label layoutX="72.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="168.0" text="Nome:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="222.0" text="Cognome:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="284.0" text="E-mail:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="305.0" layoutY="166.0" />
+      <TextField layoutX="305.0" layoutY="220.0" />
+      <TextField layoutX="305.0" layoutY="282.0" />
    </children>
 </AnchorPane>
