@@ -87,7 +87,7 @@ public class PazienteController implements Initializable{
     @FXML
     public void InsertIntoMemo(ActionEvent event) throws SQLException {
 
-        String query = ("INSERT INTO pazientiipertesi.memo(SBP, DBP, sintomi, farmaco, quantità, data, idpaziente) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        String query = ("INSERT INTO pressione (SBP, DBP, DATA, IDPAZIENTE) VALUES (?,?,?,?)");
         try (PreparedStatement pstmt = c.prepareStatement(query)){
             c.setAutoCommit(false);
             String pressioneMassima = SBP.getText();
@@ -103,8 +103,8 @@ public class PazienteController implements Initializable{
             String ora = OraFarmaco.getText();
 
 
-
-
+//inserire il campo ora nella tabella memo
+/*
             pstmt.setString(1, pressioneMassima);
             pstmt.setString(2, pressioneMinima);
             pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
@@ -112,7 +112,7 @@ public class PazienteController implements Initializable{
             pstmt.setString(5, pillole);
             pstmt.setString(6, formatter.format(date));
             pstmt.setString(7, Controller.getNomeUtente());
-
+*/
             pstmt.executeUpdate();
             c.commit();
 
@@ -124,17 +124,3 @@ public class PazienteController implements Initializable{
 
 
 }
-/*
-* con.setAutoCommit(false);
-stmt = con.createStatement();
-stmt.executeUpdate(query);
-con.commit();
-* */
-
-
-
-
-
-
-
-

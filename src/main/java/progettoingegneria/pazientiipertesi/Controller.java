@@ -65,7 +65,7 @@ public class Controller {
         Connection c = conn.link();
         try (Statement st = c.createStatement()) {
             ResultSet rs = null;
-            rs = st.executeQuery("SELECT * FROM PazientiIpertesi.Login");
+            rs = st.executeQuery("SELECT * FROM \"Dati\".Login");
             String pass;
             nomeutente = username.getText();
             System.out.println(nomeutente);

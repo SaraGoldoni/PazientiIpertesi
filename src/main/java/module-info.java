@@ -11,6 +11,7 @@ module progettoingegneria.pazientiipertesi {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
 
     opens progettoingegneria.pazientiipertesi to javafx.fxml;
     exports progettoingegneria.pazientiipertesi;
