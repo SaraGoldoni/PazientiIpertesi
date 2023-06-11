@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="661.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <Button layoutX="326.0" layoutY="97.0" mnemonicParsing="false" onAction="#InserisciTerapia" prefHeight="98.0" prefWidth="306.0" text="Inserisci nuova terapia">
+      <Button layoutX="326.0" layoutY="97.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="98.0" prefWidth="306.0" text="Inserisci nuova terapia">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>

@@ -69,12 +69,6 @@ public class PazienteController implements Initializable{
     @FXML
     private TextField DBP;
     @FXML
-    private TextField Sintomi;
-    @FXML
-    private TextField NomeFarmaco;
-    @FXML
-    private TextField quantita;
-    @FXML
     private TextField OraFarmaco;
 
 
@@ -92,17 +86,9 @@ public class PazienteController implements Initializable{
             c.setAutoCommit(false);
             int pressioneMassima = Integer.parseInt(SBP.getText());
             int pressioneMinima = Integer.parseInt(DBP.getText());
-            String sintomo = Sintomi.getText();
-            //String Farmaco = NomeFarmaco.getText();
-            String pillole = quantita.getText();
-            String F = getFarmaco(event);
-            
-            
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             String ora = OraFarmaco.getText();
-
-
 
 //inserire il campo ora nella tabella memo
 
