@@ -16,7 +16,7 @@
                 <Font size="36.0" />
             </font>
         </Button>
-      <Button layoutX="172.0" layoutY="469.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="444.0" text="Patologie Concomitanti">
+      <Button layoutX="172.0" layoutY="469.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="444.0" text="Inserisci Patologie">
          <font>
             <Font size="36.0" />
          </font>

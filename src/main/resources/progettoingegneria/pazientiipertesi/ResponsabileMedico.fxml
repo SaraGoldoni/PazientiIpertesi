@@ -8,35 +8,35 @@
 
 <AnchorPane prefHeight="565.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
    <children>
-      <Label layoutX="51.0" layoutY="25.0" text="Dati Medico:">
+      <Label layoutX="276.0" layoutY="31.0" text="Dati Medico:">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <Button layoutX="517.0" layoutY="439.0" mnemonicParsing="false" onAction="#InsertMedico" text="Inserisci" />
-      <TextField layoutX="305.0" layoutY="102.0" />
-      <Label layoutX="72.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
+      <TextField fx:id="cf_medico" layoutX="255.0" layoutY="160.0" prefHeight="32.0" prefWidth="258.0" />
+      <Label layoutX="88.0" layoutY="162.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="168.0" text="Nome:">
+      <Label layoutX="88.0" layoutY="212.0" text="Nome:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="222.0" text="Cognome:">
+      <Label layoutX="88.0" layoutY="264.0" text="Cognome:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="284.0" text="E-mail:">
+      <Label layoutX="88.0" layoutY="312.0" text="E-mail:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="305.0" layoutY="166.0" />
-      <TextField layoutX="305.0" layoutY="220.0" />
-      <TextField layoutX="305.0" layoutY="282.0" />
+      <TextField fx:id="nome_med" layoutX="255.0" layoutY="210.0" prefHeight="32.0" prefWidth="258.0" />
+      <TextField fx:id="cognome_med" layoutX="255.0" layoutY="262.0" prefHeight="32.0" prefWidth="258.0" />
+      <TextField fx:id="mail" layoutX="255.0" layoutY="310.0" prefHeight="32.0" prefWidth="258.0" />
    </children>
 </AnchorPane>
