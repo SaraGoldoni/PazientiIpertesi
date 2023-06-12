@@ -1,42 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="565.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
+<AnchorPane prefHeight="681.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
    <children>
       <Label layoutX="276.0" layoutY="31.0" text="Dati Medico:">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button layoutX="517.0" layoutY="439.0" mnemonicParsing="false" onAction="#InsertMedico" text="Inserisci" />
-      <TextField fx:id="cf_medico" layoutX="255.0" layoutY="160.0" prefHeight="32.0" prefWidth="258.0" />
-      <Label layoutX="88.0" layoutY="162.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
+      <Button layoutX="492.0" layoutY="610.0" mnemonicParsing="false" onAction="#InsertMedico" text="Inserisci" />
+      <TextField fx:id="cf_medico" layoutX="331.0" layoutY="168.0" prefHeight="32.0" prefWidth="258.0" />
+      <Label layoutX="164.0" layoutY="170.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="88.0" layoutY="212.0" text="Nome:">
+      <Label layoutX="164.0" layoutY="220.0" text="Nome:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="88.0" layoutY="264.0" text="Cognome:">
+      <Label layoutX="164.0" layoutY="272.0" text="Cognome:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="88.0" layoutY="312.0" text="E-mail:">
+      <Label layoutX="164.0" layoutY="385.0" text="E-mail:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="nome_med" layoutX="255.0" layoutY="210.0" prefHeight="32.0" prefWidth="258.0" />
-      <TextField fx:id="cognome_med" layoutX="255.0" layoutY="262.0" prefHeight="32.0" prefWidth="258.0" />
-      <TextField fx:id="mail" layoutX="255.0" layoutY="310.0" prefHeight="32.0" prefWidth="258.0" />
+      <TextField fx:id="nome_med" layoutX="331.0" layoutY="218.0" prefHeight="32.0" prefWidth="258.0" />
+      <TextField fx:id="cognome_med" layoutX="331.0" layoutY="270.0" prefHeight="32.0" prefWidth="258.0" />
+      <TextField fx:id="mail" layoutX="331.0" layoutY="383.0" prefHeight="32.0" prefWidth="258.0" />
+      <Label layoutX="158.0" layoutY="334.0" text="Data di nascita:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="164.0" layoutY="433.0" text="Nome utente:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nome_utente_med" layoutX="331.0" layoutY="431.0" prefHeight="32.0" prefWidth="258.0" />
+      <Label layoutX="164.0" layoutY="482.0" text="Password:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="pass_med" layoutX="331.0" layoutY="480.0" prefHeight="32.0" prefWidth="258.0" />
+      <Button layoutX="594.0" layoutY="610.0" mnemonicParsing="false" onAction="#turnBack" text="Indietro" />
+      <DatePicker fx:id="data_nascita_med" layoutX="331.0" layoutY="332.0" prefHeight="32.0" prefWidth="258.0" />
    </children>
 </AnchorPane>

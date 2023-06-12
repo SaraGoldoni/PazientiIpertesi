@@ -39,7 +39,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="654.0" layoutY="611.0" mnemonicParsing="false" text="Indietro" />
+      <Button layoutX="654.0" layoutY="611.0" mnemonicParsing="false" onAction="#turnBack" text="Indietro" />
       <TextField fx:id="username" layoutX="292.0" layoutY="457.0" prefHeight="32.0" prefWidth="362.0" />
       <TextField fx:id="password" layoutX="292.0" layoutY="523.0" prefHeight="32.0" prefWidth="362.0" />
       <Label layoutX="51.0" layoutY="458.0" prefHeight="30.0" prefWidth="230.0" text="Nome utente:">
@@ -57,6 +57,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="data_nascita_paz" layoutX="292.0" layoutY="323.0" prefHeight="32.0" prefWidth="362.0" />
+      <DatePicker fx:id="data_nascita_med" layoutX="292.0" layoutY="323.0" prefHeight="32.0" prefWidth="362.0" />
    </children>
 </AnchorPane>
