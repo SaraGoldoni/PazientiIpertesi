@@ -57,6 +57,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="data_nascita_med" layoutX="292.0" layoutY="323.0" prefHeight="32.0" prefWidth="362.0" />
+      <DatePicker fx:id="data_nascita_paz" layoutX="292.0" layoutY="323.0" prefHeight="32.0" prefWidth="362.0" />
    </children>
 </AnchorPane>

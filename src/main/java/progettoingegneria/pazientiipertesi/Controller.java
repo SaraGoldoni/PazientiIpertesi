@@ -100,27 +100,15 @@ public class Controller {
             while (rs.next()) {
                 if (rs.getString(1).equals("00000")&&(rs.getString(2).equals(pass))){
                     Switch("Responsabile.fxml", event);
-                    /*root = FXMLLoader.load(getClass().getResource("Responsabile.fxml"));
-                    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();*/
+
 
                 } else if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
                     if (rs.getInt(3) == 1) {
-                        /*root = FXMLLoader.load(getClass().getResource("Medico.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();*/
+
                         Switch("Medico.fxml",event);
 
                     } else {
-                       /* root = FXMLLoader.load(getClass().getResource("Paziente.fxml"));
-                        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();*/
+
                         Switch("Paziente.fxml", event);
                     }
                 }

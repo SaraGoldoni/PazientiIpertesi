@@ -20,13 +20,12 @@ import javafx.event.ActionEvent;
 
 import javax.swing.*;
 import java.net.URL;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.SimpleTimeZone;
 
 public class PazienteController implements Initializable{
     private Stage stage;
@@ -40,10 +39,34 @@ public class PazienteController implements Initializable{
     @FXML
     public ChoiceBox<String> choiceBox = new ChoiceBox<>();
 
+    DatabaseConnection conn = new DatabaseConnection();
+    Connection c = conn.link();
+
+    /**
+     * Inizializza il ChoiceBox dell'interfaccia con i farmaci relativi al paziente loggato
+     * @param arg0
+     * @param arg1
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
-        choiceBox.getItems().addAll("farmaco1","farmaco2","farmaco3");
-        choiceBox.setOnAction(this::getFarmaco);
+
+        String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
+
+            try(PreparedStatement pst = c.prepareStatement(query)){
+                String cf_paz_terapia = Controller.getCFPaziente();
+                pst.setString(1, cf_paz_terapia);
+                ResultSet rs = pst.executeQuery();
+
+                while(rs.next()){
+                   String farmaco= rs.getString(1);
+                    choiceBox.getItems().add(farmaco);
+                    choiceBox.setOnAction(this::getFarmaco);
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
     }
 
     public String getFarmaco(ActionEvent event){
@@ -51,7 +74,11 @@ public class PazienteController implements Initializable{
 
     }
 
-
+    /**
+     * Cambia la visualizzazione verso l'inserimento delle memorizzazioni giornaliere di pressione
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void SwitchToMemo(ActionEvent event) throws IOException {
 
@@ -60,20 +87,50 @@ public class PazienteController implements Initializable{
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        initialize(null,null);
+       // initialize(null,null);
 
+    }
+
+
+    /**
+     * Inserisce i dati relativi alle assunzioni del farmaco selezionato
+     * @param event
+     * @throws IOException
+     */
+    public void SwitchToFarmaco(ActionEvent event) throws IOException {
+        Controller.Switch("InserimentoFarmaco.fxml", event);
+        initialize(null,null);
+    }
+    @FXML
+    private TextField OraFarmaco;
+    @FXML
+    private TextField quantita;
+    @FXML
+    private TextField NumeroAssunzioni;
+    public void InserisciFarmaco(ActionEvent event) throws SQLException {
+        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?)");
+        String NomeFarmaco = getFarmaco(event);
+        String ora = OraFarmaco.getText();
+        SimpleDateFormat form= new SimpleDateFormat("HH.mm.ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAssunzione = new Date();
+        int quantitaFarmaco = Integer.parseInt(quantita.getText());
+        int NAssunzioni= Integer.parseInt(NumeroAssunzioni.getText());
+
+        PreparedStatement stt = c.prepareStatement(queryfarmaco);
+        stt.setString(1, NomeFarmaco);
+        stt.setInt(2, quantitaFarmaco);
+        stt.setString(3, formatter.format(dataAssunzione));
+        stt.setInt(4, NAssunzioni);
+        stt.setTime(5, Time.valueOf(form.format(ora)));
+        stt.executeUpdate();
     }
 
     @FXML
     private TextField SBP;
     @FXML
     private TextField DBP;
-    @FXML
-    private TextField OraFarmaco;
 
-
-    DatabaseConnection conn = new DatabaseConnection();
-    Connection c = conn.link();
 
     /**
      * Inserisce nella tabella di memorizzazione le rilevazioni giornaliere dell'utente.
@@ -88,9 +145,9 @@ public class PazienteController implements Initializable{
             int pressioneMinima = Integer.parseInt(DBP.getText());
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
-            String ora = OraFarmaco.getText();
 
-//inserire il campo ora nella tabella memo
+
+
 
             pstmt.setInt(1, pressioneMassima);
             pstmt.setInt(2, pressioneMinima);
@@ -105,22 +162,13 @@ public class PazienteController implements Initializable{
             throw new RuntimeException(e);
         }
     }
+    public void indietro(ActionEvent event) throws IOException {
+        Controller.Switch("Paziente.fxml", event);
+    }
 
 
 }
-/*
-* con.setAutoCommit(false);
-stmt = con.createStatement();
-stmt.executeUpdate(query);
-con.commit();
-* */
 
-
-/*
-*    pstmt.setString(3, sintomo); // consider setInt() might be more appropriate
-            pstmt.setString(4, F);
-            pstmt.setString(5, pillole);
-* */
 
 
 

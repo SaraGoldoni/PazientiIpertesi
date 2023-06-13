@@ -74,7 +74,7 @@ private TextField nome_paz;
 
         ps2.setString(1, nome_utente);
         ps2.setString(2, pass);
-        ps2.setInt(3, 1);
+        ps2.setInt(3, 0);
         ps2.setString(4, CF);
         ps2.setNull(5, Types.NULL);
 
@@ -108,7 +108,7 @@ private TextField nome_paz;
 
         ps3.setString(1,username_med);
         ps3.setString(2,pass_medico);
-        ps3.setInt(3, 0);
+        ps3.setInt(3, 1);
         ps3.setNull(4, Types.NULL);
         ps3.setString(5, CF_med);
 

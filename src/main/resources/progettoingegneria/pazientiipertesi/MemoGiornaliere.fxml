@@ -1,39 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="647.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+<AnchorPane prefHeight="397.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
-        <Label layoutX="14.0" layoutY="75.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" />
-        <TextField fx:id="SBP" layoutX="14.0" layoutY="37.0" prefHeight="25.0" prefWidth="556.0" promptText="Massima" />
-        <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" />
-        <TextField fx:id="DBP" layoutX="14.0" layoutY="98.0" prefHeight="25.0" prefWidth="556.0" promptText="Minima" />
-        <Label layoutX="14.0" layoutY="238.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci dati relativi al farmaco assunto:">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-        <Label layoutX="14.0" layoutY="147.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci eventuali sintomi:" />
-        <Label layoutX="34.0" layoutY="312.0" prefHeight="27.0" prefWidth="165.0" text="Nome del farmaco:">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-        <Label layoutX="34.0" layoutY="375.0" prefHeight="27.0" prefWidth="159.0" text="Ora di assunzione:">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-        <Label layoutX="34.0" layoutY="436.0" prefHeight="17.0" prefWidth="126.0" text="Quantità:">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-        <TextField fx:id="OraFarmaco" layoutX="209.0" layoutY="373.0" prefHeight="32.0" prefWidth="216.0" />
-      <Button fx:id="Inserisci" layoutX="699.0" layoutY="562.0" mnemonicParsing="false" onAction="#InsertIntoMemo" text="Inserisci" />
-      <TextField fx:id="quantita" layoutX="209.0" layoutY="434.0" prefHeight="32.0" prefWidth="216.0" promptText="Numero Pastiglie" />
-      <TextField fx:id="Sintomi" layoutX="14.0" layoutY="169.0" prefHeight="25.0" prefWidth="556.0" />
-      <ChoiceBox fx:id="choiceBox" layoutX="209.0" layoutY="310.0" prefHeight="32.0" prefWidth="216.0" />
+        <Label layoutX="7.0" layoutY="147.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" />
+        <TextField fx:id="SBP" layoutX="188.0" layoutY="86.0" prefHeight="32.0" prefWidth="225.0" promptText="Massima" />
+        <Label layoutX="14.0" layoutY="42.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" />
+        <TextField fx:id="DBP" layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="226.0" promptText="Minima" />
+      <Button fx:id="Inserisci" layoutX="257.0" layoutY="319.0" mnemonicParsing="false" onAction="#InsertIntoMemo" text="Inserisci" />
+      <Button layoutX="359.0" layoutY="319.0" mnemonicParsing="false" onAction="#indietro" text="Indietro" />
     </children>
 </AnchorPane>
