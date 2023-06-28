@@ -1,16 +1,47 @@
 package progettoingegneria.pazientiipertesi;
 
+import java.sql.*;
+
 public class Paziente {
 
         private String id;
+        private String Codice;
+
         private String nome;
         private String cognome;
+        private Date data_n;
+        private String Referente;
 
 
-        public Paziente(String id, String nome, String cognome){
-            this.id = id;
+/**
+ * Costruttore dell'oggetto Paziente con i dati contenuti nella riga della tabella del database
+ */
+        public Paziente() throws SQLException {
+            String query = ("SELECT * FROM pazientiipertesi.paziente WHERE codicefiscale = ?");
+            //connessione al db
+            DatabaseConnection conn = new DatabaseConnection();
+            Connection c = conn.link();
+            String CF = Controller.getCFPaziente(); //recupero il codice fiscale del paziente loggato
+            String Username = Controller.getNomeUtente(); //recupero il nome utente del paziente loggato
+
+            PreparedStatement st = c.prepareStatement(query);
+            st.setString(1, CF);
+            ResultSet rs;
+            rs= st.executeQuery();
+            rs.next();
+            String Codice = rs.getString(1);
+            String nome = rs.getString(2);
+            String cognome = rs.getString(3);
+            Date data_n = rs.getDate(4);
+            String Referente = rs.getString(5);
+
+            this.id=Username;
+            this.Codice = Codice;
             this.nome = nome;
             this.cognome = cognome;
+            this.data_n= data_n;
+            this.Referente= Referente;
+
         }
         public String getId (){
             return id;
@@ -24,16 +55,11 @@ public class Paziente {
             return cognome;
         }
 
-        public void setId (String id){
-            this.id = id;
+        public String getReferente(){
+            return Referente;
         }
 
-        public void setNome (String nome){
-            this.nome = nome;
-        }
 
-        public void setCognome (String cognome){
-            this.cognome = cognome;
-        }
+
     }
 

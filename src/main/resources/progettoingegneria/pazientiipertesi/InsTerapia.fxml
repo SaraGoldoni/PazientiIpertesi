@@ -8,53 +8,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <Button layoutX="674.0" layoutY="641.0" mnemonicParsing="false" onAction="#InserisciTerapia" text="Inserisci" />
-      <TextField fx:id="paz" layoutX="343.0" layoutY="117.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextField fx:id="Farmaco" layoutX="342.0" layoutY="173.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextField fx:id="Assunzioni" layoutX="342.0" layoutY="232.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextField fx:id="Quantita" layoutX="342.0" layoutY="286.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextArea fx:id="Indicazioni" layoutX="278.0" layoutY="490.0" prefHeight="150.0" prefWidth="321.0" />
-      <DatePicker fx:id="d_inizio" layoutX="342.0" layoutY="349.0" prefHeight="32.0" prefWidth="238.0" />
-      <DatePicker fx:id="d_fine" layoutX="342.0" layoutY="399.0" prefHeight="32.0" prefWidth="238.0" />
-      <Label layoutX="46.0" layoutY="125.0" text="Codice Fiscale Paziente:">
+      <Button layoutX="674.0" layoutY="641.0" mnemonicParsing="false" onAction="#InserisciTerapia" text="Inserisci" AnchorPane.bottomAnchor="34.0" />
+      <TextField fx:id="paz" layoutX="343.0" layoutY="117.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
+      <TextField fx:id="Farmaco" layoutX="342.0" layoutY="173.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
+      <TextField fx:id="Assunzioni" layoutX="342.0" layoutY="232.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
+      <TextField fx:id="Quantita" layoutX="342.0" layoutY="286.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
+      <TextArea fx:id="Indicazioni" layoutX="278.0" layoutY="490.0" prefHeight="150.0" prefWidth="321.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="196.39999999999998" />
+      <DatePicker fx:id="d_inizio" layoutX="342.0" layoutY="349.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="215.6" />
+      <DatePicker fx:id="d_fine" layoutX="342.0" layoutY="399.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="215.6" />
+      <Label layoutX="46.0" layoutY="125.0" prefHeight="27.0" prefWidth="212.0" text="Codice Fiscale Paziente:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="538.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="178.0" prefHeight="27.0" prefWidth="187.0" text="Farmaco:">
+      <Label layoutX="46.0" layoutY="178.0" prefHeight="27.0" prefWidth="187.0" text="Farmaco:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="677.2">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="237.0" text="Numero di assunzioni giornaliere:">
+      <Label layoutX="46.0" layoutY="237.0" prefHeight="27.0" prefWidth="278.0" text="Numero di assunzioni giornaliere:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="472.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="291.0" text="Quantità:">
+      <Label layoutX="46.0" layoutY="291.0" text="Quantità:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="677.2">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="354.0" text="Data di inizio:">
+      <Label layoutX="46.0" layoutY="354.0" text="Data di inizio:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="572.4">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="404.0" text="Data di fine:">
+      <Label layoutX="46.0" layoutY="404.0" text="Data di fine:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="572.4">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="490.0" text="Indicazioni aggiuntive:">
+      <Label layoutX="46.0" layoutY="490.0" text="Indicazioni aggiuntive:" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="572.4">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="174.0" layoutY="24.0" text="Inserimento nuova terapia">
+      <Label layoutX="174.0" layoutY="24.0" text="Inserimento nuova terapia" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="174.8">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

@@ -14,7 +14,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button layoutX="492.0" layoutY="610.0" mnemonicParsing="false" onAction="#InsertMedico" text="Inserisci" />
+      <Button layoutX="492.0" layoutY="610.0" mnemonicParsing="false" onAction="#InsertMedico" style="-fx-background-radius: 12;" text="Inserisci" />
       <TextField fx:id="cf_medico" layoutX="324.0" layoutY="169.0" prefHeight="32.0" prefWidth="271.0" />
       <Label layoutX="157.0" layoutY="171.0" prefHeight="27.0" prefWidth="134.0" text="Codice Fiscale:">
          <font>
@@ -56,7 +56,7 @@
          </font>
       </Label>
       <TextField fx:id="pass_med" layoutX="324.0" layoutY="481.0" prefHeight="32.0" prefWidth="271.0" />
-      <Button layoutX="594.0" layoutY="610.0" mnemonicParsing="false" onAction="#turnBack" text="Indietro" />
+      <Button layoutX="594.0" layoutY="610.0" mnemonicParsing="false" onAction="#turnBack" style="-fx-background-radius: 12;" text="Indietro" />
       <DatePicker fx:id="data_nascita_med" layoutX="324.0" layoutY="333.0" prefHeight="32.0" prefWidth="271.0" />
    </children>
 </AnchorPane>

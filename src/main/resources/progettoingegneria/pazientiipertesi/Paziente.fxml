@@ -5,39 +5,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="utente" prefHeight="609.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+<AnchorPane fx:id="utente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="671.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
-        <Button layoutX="36.0" layoutY="117.0" mnemonicParsing="false" onAction="#SwitchToMemo" prefHeight="47.0" prefWidth="296.0" text="Rilevazione pressione">
+        <Button layoutX="36.0" layoutY="142.0" mnemonicParsing="false" onAction="#SwitchToMemo" prefHeight="124.0" prefWidth="396.0" text="Rilevazione pressione" AnchorPane.bottomAnchor="400.0" AnchorPane.topAnchor="142.0">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-        <Button layoutX="212.0" layoutY="297.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="296.0" text="Inserisci segnalazione">
+        <Button layoutX="36.0" layoutY="355.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="396.0" text="Inserisci segnalazione" AnchorPane.topAnchor="359.0">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-      <Button layoutX="184.0" layoutY="460.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="296.0" text="Inserisci Patologie">
+      <Button layoutX="496.0" layoutY="363.0" mnemonicParsing="false" prefHeight="124.0" prefWidth="396.0" text="Inserisci Patologie" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="363.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="20.0" layoutY="61.0" text="Inserisci dati giornalieri:">
+      <Label layoutX="20.0" layoutY="61.0" text="Inserisci dati giornalieri:" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="586.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="394.0" layoutY="117.0" mnemonicParsing="false" onAction="#SwitchToFarmaco" prefHeight="51.0" prefWidth="296.0" text="Farmaci">
+      <Button layoutX="504.0" layoutY="142.0" mnemonicParsing="false" onAction="#SwitchToFarmaco" prefHeight="124.0" prefWidth="396.0" text="Farmaci" AnchorPane.bottomAnchor="400.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="142.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="20.0" layoutY="243.0" text="Inserisci segnalazioni:">
+      <Label layoutX="36.0" layoutY="309.0" text="Inserisci segnalazioni:" AnchorPane.topAnchor="309.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="20.0" layoutY="414.0" text="Inserisci patologie:">
+      <Label layoutX="547.0" layoutY="309.0" text="Inserisci patologie:" AnchorPane.bottomAnchor="326.6" AnchorPane.leftAnchor="547.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="309.0">
          <font>
             <Font size="20.0" />
          </font>

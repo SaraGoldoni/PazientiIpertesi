@@ -1,31 +1,24 @@
 package progettoingegneria.pazientiipertesi;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-
-import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.io.IOException;
 import java.util.ResourceBundle;
-import java.util.SimpleTimeZone;
 
 public class PazienteController implements Initializable{
     private Stage stage;
@@ -44,8 +37,8 @@ public class PazienteController implements Initializable{
 
     /**
      * Inizializza il ChoiceBox dell'interfaccia con i farmaci relativi al paziente loggato
-     * @param arg0
-     * @param arg1
+     * @param arg0 URL, a null se non si conosce
+     * @param arg1, ResourceBundle, a null se non si conosce
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
@@ -101,28 +94,33 @@ public class PazienteController implements Initializable{
         Controller.Switch("InserimentoFarmaco.fxml", event);
         initialize(null,null);
     }
+
     @FXML
     private TextField OraFarmaco;
     @FXML
     private TextField quantita;
     @FXML
     private TextField NumeroAssunzioni;
-    public void InserisciFarmaco(ActionEvent event) throws SQLException {
-        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?)");
+    public void InserisciFarmaco(ActionEvent event) throws SQLException, ParseException {
+        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?, ?)");
         String NomeFarmaco = getFarmaco(event);
-        String ora = OraFarmaco.getText();
-        SimpleDateFormat form= new SimpleDateFormat("HH.mm.ss");
+        Time ora = Time.valueOf(OraFarmaco.getText());
+        //DateFormat orachange = new SimpleDateFormat("hh:mm");
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dataAssunzione = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(dataAssunzione.getTime());
+
         int quantitaFarmaco = Integer.parseInt(quantita.getText());
         int NAssunzioni= Integer.parseInt(NumeroAssunzioni.getText());
+
+
 
         PreparedStatement stt = c.prepareStatement(queryfarmaco);
         stt.setString(1, NomeFarmaco);
         stt.setInt(2, quantitaFarmaco);
-        stt.setString(3, formatter.format(dataAssunzione));
+        stt.setDate(3, sqlDate);
         stt.setInt(4, NAssunzioni);
-        stt.setTime(5, Time.valueOf(form.format(ora)));
+        stt.setTime(5, ora);
         stt.executeUpdate();
     }
 

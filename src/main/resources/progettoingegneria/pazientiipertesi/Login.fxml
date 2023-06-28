@@ -9,24 +9,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.Controller">
     <children>
-        <TextField fx:id="username" layoutX="157.0" layoutY="194.0" onAction="#ControlloLogin" />
-        <PasswordField fx:id="password" layoutX="157.0" layoutY="265.0" />
-        <Text layoutX="38.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+        <TextField fx:id="username" layoutX="157.0" layoutY="194.0" onAction="#ControlloLogin" AnchorPane.leftAnchor="157.0" AnchorPane.rightAnchor="58.80000000000001" />
+        <PasswordField fx:id="password" layoutX="157.0" layoutY="265.0" AnchorPane.leftAnchor="157.0" AnchorPane.rightAnchor="58.80000000000001" />
+        <Text layoutX="38.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="279.0732421875">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text layoutX="41.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+        <Text layoutX="41.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="279.0732421875">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text layoutX="160.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+        <Text layoutX="160.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.90234375">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Text>
-        <Button fx:id="Accedi" layoutX="162.0" layoutY="431.0" mnemonicParsing="false" onAction="#ControlloLogin" prefHeight="29.0" prefWidth="70.0" text="Accedi">
+        <Button fx:id="Accedi" layoutX="162.0" layoutY="431.0" mnemonicParsing="false" onAction="#ControlloLogin" prefHeight="29.0" prefWidth="70.0" text="Accedi" AnchorPane.bottomAnchor="69.4">
             <font>
                 <Font size="14.0" />
             </font>

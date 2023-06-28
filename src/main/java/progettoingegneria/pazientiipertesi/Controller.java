@@ -108,8 +108,9 @@ public class Controller {
                         Switch("Medico.fxml",event);
 
                     } else {
-
+                        Paziente a = new Paziente();
                         Switch("Paziente.fxml", event);
+
                     }
                 }
             }

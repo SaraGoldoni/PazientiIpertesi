@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="397.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
-        <Label layoutX="7.0" layoutY="147.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" />
-        <TextField fx:id="SBP" layoutX="188.0" layoutY="86.0" prefHeight="32.0" prefWidth="225.0" promptText="Massima" />
-        <Label layoutX="14.0" layoutY="42.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" />
-        <TextField fx:id="DBP" layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="226.0" promptText="Minima" />
-      <Button fx:id="Inserisci" layoutX="257.0" layoutY="319.0" mnemonicParsing="false" onAction="#InsertIntoMemo" text="Inserisci" />
-      <Button layoutX="359.0" layoutY="319.0" mnemonicParsing="false" onAction="#indietro" text="Indietro" />
+        <Label layoutX="7.0" layoutY="147.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Diastolica (DBP):" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" />
+        <TextField fx:id="SBP" layoutX="188.0" layoutY="86.0" prefHeight="32.0" prefWidth="225.0" promptText="Massima" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="156.4" />
+        <Label layoutX="14.0" layoutY="42.0" prefHeight="17.0" prefWidth="556.0" text="* Inserisci pressione Sistolica (SBP):" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" />
+        <TextField fx:id="DBP" layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="226.0" promptText="Minima" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="156.4" />
+      <Button fx:id="Inserisci" layoutX="266.0" layoutY="270.0" mnemonicParsing="false" onAction="#InsertIntoMemo" text="Inserisci" AnchorPane.bottomAnchor="95.0" />
+      <Button layoutX="363.0" layoutY="270.0" mnemonicParsing="false" onAction="#indietro" text="Indietro" AnchorPane.bottomAnchor="95.0" />
     </children>
 </AnchorPane>
