@@ -48,7 +48,7 @@ private DatePicker d_fine;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
-        String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
+        String query = "SELECT nome, cognome, codicefiscale FROM pazientiipertesi.paziente ORDER BY nome, cognome";
         ObservableList<Paziente> pazienti = FXCollections.observableArrayList();
 
         Nome.setCellValueFactory(new PropertyValueFactory<Paziente,String>("nome"));
@@ -60,7 +60,7 @@ private DatePicker d_fine;
             ResultSet rs;
             rs = stm.executeQuery();
             while (rs.next()){
-                Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+                Paziente A = new Paziente(rs.getString(2),rs.getString(3),rs.getString(1),,"");
                 pazienti.add(A);
             }
             tabPazienti.setItems(pazienti);

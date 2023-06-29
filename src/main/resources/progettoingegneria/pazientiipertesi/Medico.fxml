@@ -29,7 +29,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="tabPazienti" layoutX="394.0" layoutY="78.0" prefHeight="461.0" prefWidth="490.0" AnchorPane.leftAnchor="393.6" AnchorPane.rightAnchor="54.0">
+      <TableView fx:id="tabPazienti" layoutX="394.0" layoutY="81.0" prefHeight="461.0" prefWidth="490.0" AnchorPane.leftAnchor="394.0" AnchorPane.rightAnchor="53.60000000000002">
         <columns>
           <TableColumn fx:id="Nome" minWidth="-1.0" prefWidth="134.40001833438873" resizable="false" text="Nome" />
           <TableColumn fx:id="Cognome" minWidth="-1.0" prefWidth="108.79998779296875" resizable="false" text="Cognome" />
