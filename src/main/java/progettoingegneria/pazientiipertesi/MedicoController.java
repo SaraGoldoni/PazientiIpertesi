@@ -1,20 +1,25 @@
 package progettoingegneria.pazientiipertesi;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class MedicoController {
-@FXML
+public class MedicoController implements Initializable{
+    @FXML
 private TextField paz;
 @FXML
 private TextField Farmaco;
@@ -28,8 +33,42 @@ private TextArea Indicazioni;
 private DatePicker d_inizio;
 @FXML
 private DatePicker d_fine;
+    @FXML
+    private TableView<Paziente> tabPazienti;
+    @FXML
+    private TableColumn<Paziente, String> Nome;
+    @FXML
+    private TableColumn<Paziente,String> Cognome;
+    @FXML
+    private TableColumn<Paziente,String> CodiceFiscale;
+
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
+//creare una lista di pazienti
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1){
+        String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
+        ObservableList<Paziente> pazienti = FXCollections.observableArrayList();
+
+        Nome.setCellValueFactory(new PropertyValueFactory<Paziente,String>("nome"));
+        Cognome.setCellValueFactory(new PropertyValueFactory<Paziente,String>("cognome"));
+        CodiceFiscale.setCellValueFactory(new PropertyValueFactory<Paziente,String>("codice fiscale"));
+        try {
+            PreparedStatement stm = conn.prepareStatement(query);
+
+            ResultSet rs;
+            rs = stm.executeQuery();
+            while (rs.next()){
+                Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+                pazienti.add(A);
+            }
+            tabPazienti.setItems(pazienti);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void SwitchToTerapia(ActionEvent event) throws IOException {
         Controller.Switch("InsTerapia.fxml", event);
     }
@@ -70,5 +109,6 @@ private DatePicker d_fine;
     }
     public void VisualizzaDati(ActionEvent event) throws IOException {
         Controller.Switch("VisDati.fxml", event);
+        //initialize(null,null);
     }
 }

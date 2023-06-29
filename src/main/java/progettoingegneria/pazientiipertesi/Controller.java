@@ -1,24 +1,25 @@
 package progettoingegneria.pazientiipertesi;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
-import java.util.EventObject;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller{
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
     ActionEvent event;
@@ -32,7 +33,8 @@ public class Controller {
     static String nomeutente;
 
 
-
+    DatabaseConnection conn = new DatabaseConnection();
+    Connection c = conn.link();
 
 
 
@@ -40,7 +42,6 @@ public class Controller {
         return nomeutente;
     }
 
-    // fare query che recupera il codiceFiscale
     public static String getCFPaziente() throws SQLException {
         DatabaseConnection conn = new DatabaseConnection();
         Connection c = conn.link();
@@ -77,6 +78,7 @@ public class Controller {
         stage.show();
     }
 
+
 /**
  * Alla pressione del tasto Login fa il controllo delle credenziali inserite nel form.
  * Se sono corrette controlla se appartengono ad un medico o ad un paziente.
@@ -104,11 +106,10 @@ public class Controller {
 
                 } else if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
                     if (rs.getInt(3) == 1) {
-
                         Switch("Medico.fxml",event);
 
                     } else {
-                        Paziente a = new Paziente();
+
                         Switch("Paziente.fxml", event);
 
                     }
@@ -122,14 +123,4 @@ public class Controller {
 
 }
 
-//FXMLLoader loader = new FXMLLoader(getClass().getResource("Paziente.fxml"));
-//load(getClass().getResource("Paziente.fxml"));
-//PazienteController pazienteController = loader.getController();
-//pazienteController.SwitchToMemo(nomeutente);
 
-/* root = FXMLLoader.load(getClass().getResource("Paziente.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        //root.setUserData();
-                        stage.setScene(scene);
-                        stage.show();*/

@@ -3,19 +3,67 @@ package progettoingegneria.pazientiipertesi;
 import java.sql.*;
 
 public class Paziente {
+private String  nome, cognome, codiceFiscalePaz, Referente;
+private Date data_nascita;
 
-        private String id;
-        private String Codice;
+    public Paziente( String codiceFiscalePaz, String nome, String cognome, Date data_nascita,  String Referente) {
 
-        private String nome;
-        private String cognome;
-        private Date data_n;
-        private String Referente;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.codiceFiscalePaz = codiceFiscalePaz;
+        this.Referente = Referente;
+        this.data_nascita = data_nascita;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String getReferente() {
+        return Referente;
+    }
+
+    public String getCodiceFiscalePaz() {
+        return codiceFiscalePaz;
+    }
+
+    public Date getData_nascita() {
+        return data_nascita;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setCodiceFiscalePaz(String codiceFiscalePaz) {
+        this.codiceFiscalePaz = codiceFiscalePaz;
+    }
+
+    public void setReferente(String Referente) {
+        this.Referente = Referente;
+    }
+
+    public void setData_nascita(Date data_nascita) {
+        this.data_nascita = data_nascita;
+    }
+}
+       /*final String id;
+        final String Codice;
+
+        final String nome;
+        final String cognome;
+        final Date data_n;
+        final String Referente;
 
 
-/**
- * Costruttore dell'oggetto Paziente con i dati contenuti nella riga della tabella del database
- */
         public Paziente() throws SQLException {
             String query = ("SELECT * FROM pazientiipertesi.paziente WHERE codicefiscale = ?");
             //connessione al db
@@ -63,3 +111,4 @@ public class Paziente {
 
     }
 
+*/

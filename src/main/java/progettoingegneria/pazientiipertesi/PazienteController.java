@@ -80,14 +80,14 @@ public class PazienteController implements Initializable{
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-       // initialize(null,null);
+
 
     }
 
 
     /**
      * Inserisce i dati relativi alle assunzioni del farmaco selezionato
-     * @param event
+     * @param event schiacciare il pulsante
      * @throws IOException
      */
     public void SwitchToFarmaco(ActionEvent event) throws IOException {
