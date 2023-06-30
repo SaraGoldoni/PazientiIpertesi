@@ -19,7 +19,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class MedicoController implements Initializable{
+public class MedicoController {
     @FXML
     private Button A, B, C;
 @FXML
@@ -39,12 +39,11 @@ private DatePicker d_fine;
     @FXML
     private TableView<Paziente> tabPazienti;
     @FXML
-    private TableColumn<Paziente,String> CodiceFiscale;
+    private TableColumn<Paziente,String> CF;
     @FXML
     private TableColumn<Paziente, String> Nome;
     @FXML
     private TableColumn<Paziente,String> Cognome;
-
     @FXML
     private TableColumn<Paziente,String> referente;
 
@@ -98,7 +97,8 @@ private DatePicker d_fine;
         Controller.Switch("VisDati.fxml", event);
         //initialize(null,null);
     }
-    @Override
+
+    /*@Override
     public void initialize(URL arg0, ResourceBundle arg1){
         String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
         ObservableList<Paziente> pazienti = FXCollections.observableArrayList();
@@ -108,24 +108,21 @@ private DatePicker d_fine;
             ResultSet rs;
             rs = stm.executeQuery();
             while (rs.next()){
-                Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+                Paziente A = new Paziente(rs.getString(1));//,rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
                 pazienti.add(A);
-                CodiceFiscale.setCellValueFactory(new PropertyValueFactory<>("CodiceFiscale"));
-                Nome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-                Cognome.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
-                referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
 
-                tabPazienti.setItems(pazienti);
             }
+            System.out.println(pazienti.get(0).getCf());
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-   /* public void Visibile(){
-
-        A.setVisible(true);
-        B.setVisible(true);
-        C.setVisible(true);
+        CF.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        //Nome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        //Cognome.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
+        //referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
+        //System.out.println(CF.getText());
+        tabPazienti.setItems(pazienti);
     }*/
+
 }

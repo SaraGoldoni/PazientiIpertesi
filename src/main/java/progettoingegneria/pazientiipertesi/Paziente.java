@@ -5,55 +5,63 @@ import javafx.beans.property.SimpleStringProperty;
 import java.sql.*;
 
 public class Paziente {
-private SimpleStringProperty nome, cognome, CodiceFiscale, Referente;
+    private String cf;
+
+    public Paziente(String cf) {
+        this.cf = cf;
+    }
+
+    public String getCf() {
+        return cf;
+    }
+
+    public void setCf(String cf) {
+        this.cf = cf;
+    }
+    /*
+private String nome, cognome,  Referente;
 private Date datanascita;
 
-    public Paziente( String CodiceFiscale, String nome, String cognome, Date datanascita,  String Referente) {
-
-        this.CodiceFiscale = new SimpleStringProperty(CodiceFiscale);
-        this.nome = new SimpleStringProperty(nome);
-        this.cognome = new SimpleStringProperty(cognome);
-        this.Referente = new SimpleStringProperty(Referente);
+    public Paziente( String nome, String cognome, Date datanascita,  String Referente) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.Referente = Referente;
         this.datanascita = datanascita;
     }
 
     public String getNome() {
-        return nome.get();
+        return nome;
     }
 
     public String getCognome() {
-        return cognome.get();
+        return cognome;
     }
 
     public String getReferente() {
-        return Referente.get();
+        return Referente;
     }
 
-    public String getCodiceFiscale() {
-        return CodiceFiscale.get();
-    }
+
 
     public Date getdatanascita() {
         return datanascita;
     }
 
-    public void setNome(String nomepaz) {
-        nome.set(nomepaz);
+    public void setNome(String nome) {
+        this.nome=nome;
     }
 
-    public void setCognome(String cognomepaz) {
-        cognome.set(cognomepaz);
+    public void setCognome(String cognome) {
+        this.cognome= cognome;
     }
 
-    public void setCodiceFiscale(String CodiceFiscalepaz) {
-        CodiceFiscale.set(CodiceFiscalepaz);
-    }
 
-    public void setReferente(String Referentepaz) {
-        Referente.set(Referentepaz);
+
+    public void setReferente(String Referente) {
+        this.Referente=Referente;
     }
 
     public void setdatanascita(Date datanascita) {
         this.datanascita = datanascita;
-    }
+    }*/
 }
