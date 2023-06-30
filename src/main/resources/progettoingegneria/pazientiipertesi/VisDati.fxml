@@ -6,10 +6,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="562.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
+<AnchorPane prefHeight="598.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <TableView fx:id="tabPazienti" prefHeight="567.0" prefWidth="748.0">
+      <TableView fx:id="tabPazienti" layoutX="24.0" layoutY="15.0" prefHeight="567.0" prefWidth="793.0">
          <columns>
             <TableColumn fx:id="Nome" minWidth="-1.0" prefWidth="134.40001833438873" resizable="false" text="Nome" />
             <TableColumn fx:id="Cognome" minWidth="-1.0" prefWidth="108.79998779296875" resizable="false" text="Cognome" />

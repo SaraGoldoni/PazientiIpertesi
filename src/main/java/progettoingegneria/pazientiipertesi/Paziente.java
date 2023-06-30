@@ -1,114 +1,59 @@
 package progettoingegneria.pazientiipertesi;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.sql.*;
 
 public class Paziente {
-private String  nome, cognome, codiceFiscalePaz, Referente;
-private Date data_nascita;
+private SimpleStringProperty nome, cognome, CodiceFiscale, Referente;
+private Date datanascita;
 
-    public Paziente( String codiceFiscalePaz, String nome, String cognome, Date data_nascita,  String Referente) {
+    public Paziente( String CodiceFiscale, String nome, String cognome, Date datanascita,  String Referente) {
 
-        this.nome = nome;
-        this.cognome = cognome;
-        this.codiceFiscalePaz = codiceFiscalePaz;
-        this.Referente = Referente;
-        this.data_nascita = data_nascita;
+        this.CodiceFiscale = new SimpleStringProperty(CodiceFiscale);
+        this.nome = new SimpleStringProperty(nome);
+        this.cognome = new SimpleStringProperty(cognome);
+        this.Referente = new SimpleStringProperty(Referente);
+        this.datanascita = datanascita;
     }
 
     public String getNome() {
-        return nome;
+        return nome.get();
     }
 
     public String getCognome() {
-        return cognome;
+        return cognome.get();
     }
 
     public String getReferente() {
-        return Referente;
+        return Referente.get();
     }
 
-    public String getCodiceFiscalePaz() {
-        return codiceFiscalePaz;
+    public String getCodiceFiscale() {
+        return CodiceFiscale.get();
     }
 
-    public Date getData_nascita() {
-        return data_nascita;
+    public Date getdatanascita() {
+        return datanascita;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String nomepaz) {
+        nome.set(nomepaz);
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setCognome(String cognomepaz) {
+        cognome.set(cognomepaz);
     }
 
-    public void setCodiceFiscalePaz(String codiceFiscalePaz) {
-        this.codiceFiscalePaz = codiceFiscalePaz;
+    public void setCodiceFiscale(String CodiceFiscalepaz) {
+        CodiceFiscale.set(CodiceFiscalepaz);
     }
 
-    public void setReferente(String Referente) {
-        this.Referente = Referente;
+    public void setReferente(String Referentepaz) {
+        Referente.set(Referentepaz);
     }
 
-    public void setData_nascita(Date data_nascita) {
-        this.data_nascita = data_nascita;
+    public void setdatanascita(Date datanascita) {
+        this.datanascita = datanascita;
     }
 }
-       /*final String id;
-        final String Codice;
-
-        final String nome;
-        final String cognome;
-        final Date data_n;
-        final String Referente;
-
-
-        public Paziente() throws SQLException {
-            String query = ("SELECT * FROM pazientiipertesi.paziente WHERE codicefiscale = ?");
-            //connessione al db
-            DatabaseConnection conn = new DatabaseConnection();
-            Connection c = conn.link();
-            String CF = Controller.getCFPaziente(); //recupero il codice fiscale del paziente loggato
-            String Username = Controller.getNomeUtente(); //recupero il nome utente del paziente loggato
-
-            PreparedStatement st = c.prepareStatement(query);
-            st.setString(1, CF);
-            ResultSet rs;
-            rs= st.executeQuery();
-            rs.next();
-            String Codice = rs.getString(1);
-            String nome = rs.getString(2);
-            String cognome = rs.getString(3);
-            Date data_n = rs.getDate(4);
-            String Referente = rs.getString(5);
-
-            this.id=Username;
-            this.Codice = Codice;
-            this.nome = nome;
-            this.cognome = cognome;
-            this.data_n= data_n;
-            this.Referente= Referente;
-
-        }
-        public String getId (){
-            return id;
-        }
-
-        public String getNome (){
-            return nome;
-        }
-
-        public String getCognome (){
-            return cognome;
-        }
-
-        public String getReferente(){
-            return Referente;
-        }
-
-
-
-    }
-
-*/
