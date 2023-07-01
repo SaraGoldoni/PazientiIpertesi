@@ -13,29 +13,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
+import org.controlsfx.control.PropertySheet;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class MedicoController {
+public class MedicoController implements Initializable{
     @FXML
     private Button A, B, C;
-@FXML
-private TextField paz;
-@FXML
-private TextField Farmaco;
-@FXML
-private TextField Assunzioni;
-@FXML
-private TextField Quantita;
-@FXML
-private TextArea Indicazioni;
-@FXML
-private DatePicker d_inizio;
-@FXML
-private DatePicker d_fine;
+
     @FXML
     private TableView<Paziente> tabPazienti;
     @FXML
@@ -50,45 +38,28 @@ private DatePicker d_fine;
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
 
+/*@FXML
+public String getcodicefiscalepaz (){
+    TablePosition<Paziente,String> pos = tabPazienti.getSelectionModel().getSelectedCells().get(0);
+    int row = pos.getRow();
 
+// Item here is the table view type:
+    Paziente item = tabPazienti.getItems().get(row);
 
+    TableColumn<Paziente,String> col = pos.getTableColumn();
+
+// this gives the value in the selected cell:
+    String cfpaz = col.getCellObservableValue(item).getValue();
+    System.out.println(cfpaz);
+    return cfpaz;
+}*/
 
     public void SwitchToTerapia(ActionEvent event) throws IOException {
+
         Controller.Switch("InsTerapia.fxml", event);
 
     }
-    public void InserisciTerapia(ActionEvent event) throws SQLException {
-        String query = ("INSERT INTO pazientiipertesi.Terapia(Farmaco, Paziente, Medico, assunzioni, quantità, indicazioni, data_inizio, data_fine) VALUES (?, ?, ?, ?, ?, ? , ?, ?)");
-        try(PreparedStatement prst = conn.prepareStatement(query)) {
-            conn.setAutoCommit(false);
-            String F, P, M, I, data_I, data_F;
-            int A, Q;
-            F = Farmaco.getText();
-            P = paz.getText();
-            M = Controller.getCFMedico();
-            A = Integer.parseInt(Assunzioni.getText());
-            Q = Integer.parseInt(Quantita.getText());
-            I = Indicazioni.getText();
-            data_I = d_inizio.getValue().toString();
-            data_F = d_fine.getValue().toString();
 
-            prst.setString(1, F);
-            prst.setString(2, P);
-            prst.setString(3, M);
-            prst.setInt(4, A);
-            prst.setInt(5, Q);
-            prst.setString(6, I);
-            prst.setDate(7, Date.valueOf(data_I));
-            prst.setDate(8, Date.valueOf(data_F));
-
-            prst.executeUpdate();
-
-            conn.commit();
-            Controller.Switch("Medico.fxml",event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public void ModificaTerapia(ActionEvent event) throws IOException {
         Controller.Switch("ModTerapia.fxml", event);
     }
@@ -98,7 +69,7 @@ private DatePicker d_fine;
         //initialize(null,null);
     }
 
-    /*@Override
+   @Override
     public void initialize(URL arg0, ResourceBundle arg1){
         String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
         ObservableList<Paziente> pazienti = FXCollections.observableArrayList();
@@ -108,21 +79,26 @@ private DatePicker d_fine;
             ResultSet rs;
             rs = stm.executeQuery();
             while (rs.next()){
-                Paziente A = new Paziente(rs.getString(1));//,rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+                Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
                 pazienti.add(A);
-
             }
             System.out.println(pazienti.get(0).getCf());
+            System.out.println(pazienti.size());
+
+            //System.out.println(this.CF.getText());
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         CF.setCellValueFactory(new PropertyValueFactory<>("cf"));
-        //Nome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        //Cognome.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
-        //referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
-        //System.out.println(CF.getText());
-        tabPazienti.setItems(pazienti);
-    }*/
+        Nome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        Cognome.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
+        referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
+
+        tabPazienti.getItems().setAll(pazienti);
+        //String p = getcodicefiscalepaz();
+        //System.out.println(p);
+    }
 
 }
