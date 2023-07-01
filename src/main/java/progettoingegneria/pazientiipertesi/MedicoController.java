@@ -1,5 +1,6 @@
 package progettoingegneria.pazientiipertesi;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,21 +39,7 @@ public class MedicoController implements Initializable{
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
 
-/*@FXML
-public String getcodicefiscalepaz (){
-    TablePosition<Paziente,String> pos = tabPazienti.getSelectionModel().getSelectedCells().get(0);
-    int row = pos.getRow();
 
-// Item here is the table view type:
-    Paziente item = tabPazienti.getItems().get(row);
-
-    TableColumn<Paziente,String> col = pos.getTableColumn();
-
-// this gives the value in the selected cell:
-    String cfpaz = col.getCellObservableValue(item).getValue();
-    System.out.println(cfpaz);
-    return cfpaz;
-}*/
 
     public void SwitchToTerapia(ActionEvent event) throws IOException {
 
@@ -99,8 +86,27 @@ public String getcodicefiscalepaz (){
         tabPazienti.getItems().setAll(pazienti);
 
 
-        //String p = getcodicefiscalepaz();
-        //System.out.println(p);
     }
+//Static Paziente paz =
+   /* public String getcodicefiscalepaz (){
+        Integer Indice = tabPazienti.getSelectionModel().getSelectedIndex();
+
+        System.out.println(cfpaz);
+        return cfpaz;
+    }*/
+
+
+
+       /* public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+            //Check whether item is selected and set value of selected item to Label
+            if(tabPazienti.getSelectionModel().getSelectedItem() != null)
+            {
+                TableView.TableViewSelectionModel selectionModel = tabPazienti.getSelectionModel();
+                ObservableList selectedCells = selectionModel.getSelectedCells();
+                TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+                Object val = tablePosition.getTableColumn().getCellData(newValue);
+                System.out.println("Selected Value" + val);
+            }
+        }*/
 
 }

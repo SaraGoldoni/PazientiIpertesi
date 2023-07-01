@@ -30,19 +30,24 @@ public class InsTerapiaController {
     private DatePicker d_fine;
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
+
     public void InserisciTerapia(ActionEvent event) throws SQLException {
+
         String query = ("INSERT INTO pazientiipertesi.Terapia(Farmaco, Paziente, Medico, assunzioni, quantità, indicazioni, data_inizio, data_fine) VALUES (?, ?, ?, ?, ?, ? , ?, ?)");
         try(PreparedStatement prst = conn.prepareStatement(query)) {
             conn.setAutoCommit(false);
             String F,P, M, I, data_I, data_F;
             int A, Q;
             F = Farmaco.getText();
-            /*MedicoController P = new MedicoController();
+            P= paz.getText();
+            //MedicoController P = new MedicoController();
+            //Paziente p = P.getcodicefiscalepaz();
+           // String CFpaziente= p.getCf();
+            //paz.setText(p);
 
-            String p = P.getcodicefiscalepaz();
-            paz.setText(p);
-            System.out.println(p);*/
-            P = paz.getText();
+            //P = paz.getText();
+            //String Z = MedicoController.getcodicefiscalepaz();
+            //System.out.println(Z);
             M = Controller.getCFMedico();
             A = Integer.parseInt(Assunzioni.getText());
             Q = Integer.parseInt(Quantita.getText());

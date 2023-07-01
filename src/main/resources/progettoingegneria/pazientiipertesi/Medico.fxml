@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="605.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <TableView fx:id="tabPazienti" layoutX="131.0" layoutY="14.0"  prefHeight="494.0" prefWidth="688.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0">
+      <TableView fx:id="tabPazienti" layoutX="131.0" layoutY="14.0" prefHeight="494.0" prefWidth="688.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0">
         <columns>
             <TableColumn fx:id="CF" minWidth="-Infinity" prefWidth="215.20001220703125" text="Codice fiscale" />
           <TableColumn fx:id="Nome" minWidth="-Infinity" prefWidth="120.800048828125" text="Nome" />
