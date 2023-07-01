@@ -97,6 +97,8 @@ public String getcodicefiscalepaz (){
         referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
 
         tabPazienti.getItems().setAll(pazienti);
+
+
         //String p = getcodicefiscalepaz();
         //System.out.println(p);
     }
