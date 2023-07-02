@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="605.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <TableView fx:id="tabPazienti" layoutX="131.0" layoutY="14.0" prefHeight="494.0" prefWidth="688.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0">
+      <TableView fx:id="tabPazienti" layoutX="131.0" layoutY="14.0" onMouseClicked="#Visibile" prefHeight="494.0" prefWidth="688.0" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0">
         <columns>
             <TableColumn fx:id="CF" minWidth="-Infinity" prefWidth="215.20001220703125" text="Codice fiscale" />
           <TableColumn fx:id="Nome" minWidth="-Infinity" prefWidth="120.800048828125" text="Nome" />
@@ -17,15 +17,15 @@
             <TableColumn fx:id="referente" minWidth="-Infinity" prefWidth="210.39996337890625" text="Referente" />
         </columns>
       </TableView>
-      <Button layoutX="24.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="62.0" prefWidth="281.0" style="-fx-background-radius: 12;" text="Inserisci nuova terapia">
+      <Button fx:id="A" layoutX="24.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="62.0" prefWidth="281.0" style="-fx-background-radius: 12;" text="Inserisci nuova terapia" visible="false">
          <font>
             <Font name="System Bold" size="22.0" />
          </font></Button>
-      <Button layoutX="349.0" layoutY="521.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Modifica terapia">
+      <Button fx:id="B" layoutX="349.0" layoutY="521.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Modifica terapia" visible="false">
          <font>
             <Font name="System Bold" size="22.0" />
          </font></Button>
-      <Button layoutX="648.0" layoutY="521.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Visualizza dati paziente">
+      <Button fx:id="C" layoutX="648.0" layoutY="521.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Visualizza dati paziente" visible="false">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

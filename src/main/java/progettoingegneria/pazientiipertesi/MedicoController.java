@@ -44,16 +44,18 @@ public class MedicoController implements Initializable{
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
 
-
-
+    /**
+     * Metodo per effettuare lo Switch alla pagina di inserimento di una nuova terapia per il paziente selezionato nella tabella.
+     * @param event, evento di selezione del bottone "Inserisci Terapia"
+     * @throws IOException, eccezione che viene lanciata in caso di errore
+     */
     public void SwitchToTerapia(ActionEvent event) throws IOException {
+
         String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
-        //System.out.println(cfpaztab);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InsTerapia.fxml"));
         Parent root = loader.load();
         InsTerapiaController controller = loader.getController();
         controller.displayCF(cfpaztab);
-        //Controller.Switch("InsTerapia.fxml", event);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -70,6 +72,11 @@ public class MedicoController implements Initializable{
         //initialize(null,null);
     }
 
+    /**
+     * Metodo per l'inizializzazione della tabella di pazienti vista dal medico
+     * @param arg0 URL
+     * @param arg1 ResourceBundle
+     */
    @Override
     public void initialize(URL arg0, ResourceBundle arg1){
         String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
@@ -83,11 +90,6 @@ public class MedicoController implements Initializable{
                 Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
                 pazienti.add(A);
             }
-            System.out.println(pazienti.get(0).getCf());
-            System.out.println(pazienti.size());
-
-            //System.out.println(this.CF.getText());
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -101,26 +103,10 @@ public class MedicoController implements Initializable{
 
 
     }
-//Static Paziente paz =
-   /* public String getcodicefiscalepaz (){
-        Integer Indice = tabPazienti.getSelectionModel().getSelectedIndex();
-
-        System.out.println(cfpaz);
-        return cfpaz;
-    }*/
-
-
-
-       /* public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-            //Check whether item is selected and set value of selected item to Label
-            if(tabPazienti.getSelectionModel().getSelectedItem() != null)
-            {
-                TableView.TableViewSelectionModel selectionModel = tabPazienti.getSelectionModel();
-                ObservableList selectedCells = selectionModel.getSelectedCells();
-                TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-                Object val = tablePosition.getTableColumn().getCellData(newValue);
-                System.out.println("Selected Value" + val);
-            }
-        }*/
+    public void Visibile(){
+        A.setVisible(true);
+        B.setVisible(true);
+        C.setVisible(true);
+    }
 
 }

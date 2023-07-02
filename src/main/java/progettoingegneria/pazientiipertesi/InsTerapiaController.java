@@ -37,23 +37,13 @@ public class InsTerapiaController {
         codiceFisc.setText(codiceFiscale);
     }
     public void InserisciTerapia(ActionEvent event) throws SQLException {
-        System.out.println(codiceFisc.toString().length());
+       // System.out.println(codiceFisc.toString().length());
         String query = ("INSERT INTO pazientiipertesi.Terapia(Farmaco, Paziente, Medico, assunzioni, quantità, indicazioni, data_inizio, data_fine) VALUES (?, ?, ?, ?, ?, ? , ?, ?)");
         try(PreparedStatement prst = conn.prepareStatement(query)) {
             conn.setAutoCommit(false);
             String F,P, M, I, data_I, data_F;
             int A, Q;
             F = Farmaco.getText();
-            P= paz.getText();
-            //MedicoController P = new MedicoController();
-            //Paziente p = P.getcodicefiscalepaz();
-           // String CFpaziente= p.getCf();
-            //paz.setText(p);
-
-
-            //P = paz.getText();
-            //String Z = MedicoController.getcodicefiscalepaz();
-            //System.out.println(Z);
             M = Controller.getCFMedico();
             A = Integer.parseInt(Assunzioni.getText());
             Q = Integer.parseInt(Quantita.getText());
