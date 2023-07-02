@@ -39,7 +39,34 @@ public class Controller {
         return nomeutente;
     }
 
+<<<<<<< Updated upstream
 
+=======
+    public static String getCFPaziente() throws SQLException {
+        DatabaseConnection conn = new DatabaseConnection();
+        Connection c = conn.link();
+        String CF=getNomeUtente();
+        ResultSet rs;
+        String query = ("SELECT paziente FROM \"Dati\".Login where NomeUtente=?");
+        PreparedStatement pstmt = c.prepareStatement(query);
+            pstmt.setString(1, CF);
+            rs=pstmt.executeQuery();
+            rs.next();
+            return rs.getString(1);
+    }
+    public static String getCFMedico() throws SQLException {
+        DatabaseConnection conn = new DatabaseConnection();
+        Connection c = conn.link();
+        String CF=getNomeUtente();
+        ResultSet rs;
+        String query = ("SELECT medico FROM \"Dati\".Login where NomeUtente=?");
+        PreparedStatement pstmt = c.prepareStatement(query);
+        pstmt.setString(1, CF);
+        rs=pstmt.executeQuery();
+        rs.next();
+        return rs.getString(1);
+    }
+>>>>>>> Stashed changes
 
     public static void Switch(String s, ActionEvent event) throws IOException {
         Stage stage;
