@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/InsTerapiaController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/Medico.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/MedicoController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/ModTerapiaController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/Paziente.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/PazienteController.java" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/progettoingegneria/pazientiipertesi/ResponsabileController.java" dialect="GenericSQL" />

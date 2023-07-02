@@ -59,6 +59,7 @@ public class Controller{
         Connection c = conn.link();
         String CF=getNomeUtente();
         ResultSet rs;
+
         String query = ("SELECT medico FROM PazientiIpertesi.Login where NomeUtente=?");
         PreparedStatement pstmt = c.prepareStatement(query);
         pstmt.setString(1, CF);

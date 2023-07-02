@@ -64,7 +64,16 @@ public class MedicoController implements Initializable{
     }
 
     public void ModificaTerapia(ActionEvent event) throws IOException {
-        Controller.Switch("ModTerapia.fxml", event);
+        String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModTerapia.fxml"));
+        Parent root = loader.load();
+        ModTerapiaController controller = loader.getController();
+        controller.displayCF(cfpaztab);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     public void VisualizzaDati(ActionEvent event) throws IOException {

@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="598.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
+<AnchorPane prefHeight="668.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.VisDatiController">
    <children>
-      <TableView fx:id="tabPazienti" layoutX="24.0" layoutY="15.0" prefHeight="567.0" prefWidth="793.0">
-         <columns>
-            <TableColumn fx:id="Nome" minWidth="-1.0" prefWidth="134.40001833438873" resizable="false" text="Nome" />
-            <TableColumn fx:id="Cognome" minWidth="-1.0" prefWidth="108.79998779296875" resizable="false" text="Cognome" />
-            <TableColumn fx:id="CodiceFiscale" prefWidth="247.20001220703125" text="Codice fiscale" />
-         </columns>
-         <contextMenu>
-            <ContextMenu>
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-               </items>
-            </ContextMenu>
-         </contextMenu>
-      </TableView>
+      <BarChart fx:id="barchart" layoutX="134.0" layoutY="487.0" prefHeight="124.0" prefWidth="177.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <LineChart fx:id="line" layoutX="529.0" layoutY="487.0" prefHeight="129.0" prefWidth="146.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <TabPane fx:id="tab" layoutX="42.0" layoutY="35.0" prefHeight="393.0" prefWidth="799.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="patologie" text="Patologie">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listapatologie" layoutX="10.0" layoutY="5.0" prefHeight="346.0" prefWidth="782.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="terapieconc" text="Terapie concomitanti">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="listaterapie" prefHeight="340.0" prefWidth="782.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

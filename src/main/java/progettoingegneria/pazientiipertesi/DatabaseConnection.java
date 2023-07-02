@@ -46,4 +46,7 @@ public class DatabaseConnection {
         }
         return c;
     }
+
+    //creare metodo per l'esecuzione di query nel database
+
 }
