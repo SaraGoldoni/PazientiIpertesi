@@ -3,6 +3,7 @@ package progettoingegneria.pazientiipertesi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -30,9 +31,13 @@ public class InsTerapiaController {
     private DatePicker d_fine;
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
-
+    @FXML
+    private Label codiceFisc;
+    public void displayCF (String codiceFiscale){
+        codiceFisc.setText(codiceFiscale);
+    }
     public void InserisciTerapia(ActionEvent event) throws SQLException {
-
+        System.out.println(codiceFisc.toString().length());
         String query = ("INSERT INTO pazientiipertesi.Terapia(Farmaco, Paziente, Medico, assunzioni, quantità, indicazioni, data_inizio, data_fine) VALUES (?, ?, ?, ?, ?, ? , ?, ?)");
         try(PreparedStatement prst = conn.prepareStatement(query)) {
             conn.setAutoCommit(false);
@@ -45,6 +50,7 @@ public class InsTerapiaController {
            // String CFpaziente= p.getCf();
             //paz.setText(p);
 
+
             //P = paz.getText();
             //String Z = MedicoController.getcodicefiscalepaz();
             //System.out.println(Z);
@@ -56,7 +62,7 @@ public class InsTerapiaController {
             data_F = d_fine.getValue().toString();
 
             prst.setString(1, F);
-            prst.setString(2, P);
+            prst.setString(2, codiceFisc.getText());
             prst.setString(3, M);
             prst.setInt(4, A);
             prst.setInt(5, Q);
@@ -72,5 +78,6 @@ public class InsTerapiaController {
             throw new RuntimeException(e);
         }
     }
+
 
 }

@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.InsTerapiaController">
    <children>
       <Button layoutX="674.0" layoutY="641.0" mnemonicParsing="false" onAction="#InserisciTerapia" text="Inserisci" AnchorPane.bottomAnchor="34.0" />
-      <TextField fx:id="paz" layoutX="343.0" layoutY="117.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
+      <TextField fx:id="paz" layoutX="39.0" layoutY="93.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="518.6" />
       <TextField fx:id="Farmaco" layoutX="342.0" layoutY="173.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
       <TextField fx:id="Assunzioni" layoutX="342.0" layoutY="232.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
       <TextField fx:id="Quantita" layoutX="342.0" layoutY="286.0" prefHeight="32.0" prefWidth="238.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="214.6" />
@@ -58,5 +58,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <Label fx:id="codiceFisc" layoutX="389.0" layoutY="128.0" />
    </children>
 </AnchorPane>

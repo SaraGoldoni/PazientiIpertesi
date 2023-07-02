@@ -6,7 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -14,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
+import javafx.stage.Stage;
 import org.controlsfx.control.PropertySheet;
 
 import java.io.IOException;
@@ -42,8 +47,17 @@ public class MedicoController implements Initializable{
 
 
     public void SwitchToTerapia(ActionEvent event) throws IOException {
-
-        Controller.Switch("InsTerapia.fxml", event);
+        String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
+        //System.out.println(cfpaztab);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InsTerapia.fxml"));
+        Parent root = loader.load();
+        InsTerapiaController controller = loader.getController();
+        controller.displayCF(cfpaztab);
+        //Controller.Switch("InsTerapia.fxml", event);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
