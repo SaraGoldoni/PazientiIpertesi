@@ -37,11 +37,11 @@ public class InsTerapiaController {
         codiceFisc.setText(codiceFiscale);
     }
     public void InserisciTerapia(ActionEvent event) throws SQLException {
-       // System.out.println(codiceFisc.toString().length());
+
         String query = ("INSERT INTO pazientiipertesi.Terapia(Farmaco, Paziente, Medico, assunzioni, quantità, indicazioni, data_inizio, data_fine) VALUES (?, ?, ?, ?, ?, ? , ?, ?)");
         try(PreparedStatement prst = conn.prepareStatement(query)) {
             conn.setAutoCommit(false);
-            String F,P, M, I, data_I, data_F;
+            String F, M, I, data_I, data_F;
             int A, Q;
             F = Farmaco.getText();
             M = Controller.getCFMedico();

@@ -7,9 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -92,7 +90,7 @@ public class PazienteController implements Initializable{
      */
     public void SwitchToFarmaco(ActionEvent event) throws IOException {
         Controller.Switch("InserimentoFarmaco.fxml", event);
-        initialize(null,null);
+
     }
 
     @FXML
@@ -162,6 +160,36 @@ public class PazienteController implements Initializable{
     }
     public void indietro(ActionEvent event) throws IOException {
         Controller.Switch("Paziente.fxml", event);
+    }
+    public void SwitchToSintomo(ActionEvent event) throws IOException {
+        Controller.Switch("Sintomi.fxml", event);
+        initialize(null,null);
+    }
+    @FXML
+    private DatePicker DataSintomo;
+    @FXML
+    private TextField NomeSintomo;
+    @FXML
+    private TextArea DescrizioneSintomo;
+    @FXML
+    public void InsertSintomo(ActionEvent event) throws SQLException{
+        //String querySintomo = ("INSERT INTO \"Dati\".sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
+        String querySintomo = ("INSERT INTO pazientiipertesi.sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
+        try (PreparedStatement ps = c.prepareStatement(querySintomo)) {
+            c.setAutoCommit(false);
+            String cf_paz_sintomo = Controller.getCFPaziente();
+            String DataS = DataSintomo.getValue().toString();
+            String NomeS= NomeSintomo.getText();
+            String DescrizioneS= DescrizioneSintomo.getText();
+
+            ps.setString(1, cf_paz_sintomo);
+            ps.setString(2, NomeS);
+            ps.setDate(3, java.sql.Date.valueOf(DataS));
+            ps.setString(4, DescrizioneS);
+
+            ps.executeUpdate();
+            c.commit();
+        }
     }
 
 
