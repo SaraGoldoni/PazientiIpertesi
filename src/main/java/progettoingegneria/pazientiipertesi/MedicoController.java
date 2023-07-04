@@ -56,6 +56,7 @@ public class MedicoController implements Initializable{
         Parent root = loader.load();
         InsTerapiaController controller = loader.getController();
         controller.displayCF(cfpaztab);
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -4,17 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 
-import java.io.IOException;
+import java.awt.event.MouseEvent;
+
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class ModTerapiaController implements Initializable {
+public class ModTerapiaController {
 
     @FXML
     public ChoiceBox<String> selterapia = new ChoiceBox<>();
@@ -31,35 +30,36 @@ public class ModTerapiaController implements Initializable {
     @FXML
     private Label assgiornaliere, quantita, data_i, data_f, indicazioni;
     @FXML
-    private TextField cfpaz;
+    public TextField cfpaz;
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
     public void displayCF (String codiceFiscale){
         cfpaz.setText(codiceFiscale);
-        //System.out.println(cfpaz.getText());
     }
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        //String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente ="/ +/cfpaz.getText());
-        try {
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while(rs.next()){
-                //System.out.println(rs.getString(1));
-                String farmaco= rs.getString(1);
-                selterapia.getItems().add(farmaco);
-                selterapia.setOnAction(this::getFarmaco);
+    public void prova(){
+        System.out.println(cfpaz.getText());
+    }
+
+   /* public void fill(MouseEvent event){
+        if(event.getClickCount()==1) {
+            String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
+            ObservableList<String> list = FXCollections.observableArrayList();
+            try (PreparedStatement p = c.prepareStatement(query)) {
+                c.setAutoCommit(false);
+                p.setString(1, cfpaz.getText());
+                ResultSet rs = p.executeQuery();
+                c.commit();
+                while (rs.next()) {
+                    list.addAll(rs.getString(1));
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            selterapia.getItems().addAll(list);
         }
-
-
-
-
-
-    }
+    }*/
     public String getFarmaco(ActionEvent event){
         return selterapia.getValue();
     }
@@ -73,6 +73,31 @@ public class ModTerapiaController implements Initializable {
        p.setString(3, Controller.getCFMedico());
        //p.setString(4,ass);
     }
+
+    public void fill(javafx.scene.input.MouseEvent event) {
+      ObservableList<String> list = FXCollections.observableArrayList();
+      if (selterapia.getItems().isEmpty()){
+            String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
+
+            try (PreparedStatement p = c.prepareStatement(query)) {
+
+                p.setString(1, cfpaz.getText());
+                ResultSet rs = p.executeQuery();
+
+                while (rs.next()) {
+                    list.addAll(rs.getString(1));
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            selterapia.getItems().addAll(list);
+
+      }
+    }
+
+
+
    /* public void Visibile(){
         System.out.println(cfpaz.getText());
         Assunzioni.setVisible(true);

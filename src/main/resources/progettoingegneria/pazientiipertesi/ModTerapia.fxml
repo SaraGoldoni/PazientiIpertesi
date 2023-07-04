@@ -9,49 +9,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="741.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ModTerapiaController">
+<AnchorPane prefHeight="790.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ModTerapiaController">
    <children>
-      <ChoiceBox fx:id="selterapia" layoutX="353.0" layoutY="119.0" prefHeight="38.0" prefWidth="248.0" />
-      <Label layoutX="58.0" layoutY="44.0" prefHeight="30.0" prefWidth="80.0" text="Paziente:">
+      <ChoiceBox fx:id="selterapia" layoutX="384.0" layoutY="192.0" onMousePressed="#fill" prefHeight="32.0" prefWidth="238.0" />
+      <Label layoutX="65.0" layoutY="119.0" prefHeight="30.0" prefWidth="80.0" text="Paziente:">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="62.0" layoutY="119.0" prefHeight="38.0" prefWidth="224.0" text="Terapia da modificare: ">
+      <Label layoutX="65.0" layoutY="189.0" prefHeight="38.0" prefWidth="224.0" text="Terapia da modificare: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="690.0" layoutY="622.0" mnemonicParsing="false" onAction="#ModificaTerapia" text="Inserisci" />
-      <TextField fx:id="Assunzioni" layoutX="358.0" layoutY="213.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextField fx:id="Quantita" layoutX="358.0" layoutY="267.0" prefHeight="32.0" prefWidth="238.0" />
-      <TextArea fx:id="Indicazioni" layoutX="294.0" layoutY="471.0" prefHeight="150.0" prefWidth="321.0" />
-      <DatePicker fx:id="d_inizio" layoutX="358.0" layoutY="330.0" prefHeight="32.0" prefWidth="238.0" />
-      <DatePicker fx:id="d_fine" layoutX="358.0" layoutY="380.0" prefHeight="32.0" prefWidth="238.0" />
-      <Label fx:id="assgiornaliere" layoutX="62.0" layoutY="218.0" prefHeight="27.0" prefWidth="278.0" text="Numero di assunzioni giornaliere:">
+      <Button layoutX="583.0" layoutY="730.0" mnemonicParsing="false" onAction="#ModificaTerapia" text="Aggiorna" />
+      <TextField fx:id="Assunzioni" layoutX="384.0" layoutY="283.0" prefHeight="32.0" prefWidth="238.0" />
+      <TextField fx:id="Quantita" layoutX="384.0" layoutY="346.0" prefHeight="32.0" prefWidth="238.0" />
+      <TextArea fx:id="Indicazioni" layoutX="340.0" layoutY="538.0" prefHeight="150.0" prefWidth="326.0" />
+      <DatePicker fx:id="d_inizio" layoutX="384.0" layoutY="420.0" prefHeight="32.0" prefWidth="238.0" />
+      <DatePicker fx:id="d_fine" layoutX="384.0" layoutY="482.0" prefHeight="32.0" prefWidth="238.0" />
+      <Label fx:id="assgiornaliere" layoutX="69.0" layoutY="285.0" prefHeight="27.0" prefWidth="278.0" text="Numero di assunzioni giornaliere:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="quantita" layoutX="62.0" layoutY="272.0" text="Quantità:">
+      <Label fx:id="quantita" layoutX="69.0" layoutY="348.0" text="Quantità:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="data_i" layoutX="62.0" layoutY="335.0" text="Data di inizio:">
+      <Label fx:id="data_i" layoutX="69.0" layoutY="422.0" text="Data di inizio:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="data_f" layoutX="62.0" layoutY="385.0" text="Data di fine:">
+      <Label fx:id="data_f" layoutX="68.0" layoutY="484.0" text="Data di fine:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="indicazioni" layoutX="62.0" layoutY="471.0" text="Indicazioni aggiuntive:">
+      <Label fx:id="indicazioni" layoutX="69.0" layoutY="538.0" text="Indicazioni aggiuntive:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="cfpaz" layoutX="358.0" layoutY="43.0" prefHeight="32.0" prefWidth="238.0" />
+      <TextField fx:id="cfpaz" layoutX="384.0" layoutY="118.0" prefHeight="32.0" prefWidth="238.0" />
+      <Label layoutX="254.0" layoutY="37.0" prefHeight="35.0" prefWidth="259.0" text="Modifica della terapia">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
