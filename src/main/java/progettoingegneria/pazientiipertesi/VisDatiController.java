@@ -19,7 +19,7 @@ public class VisDatiController implements Initializable {
     @FXML
     private TabPane tab;
 @FXML
-    private Tab patologie, terapieconc;
+private Tab patologie, terapieconc;
 @FXML
 private List listaterapie, listapatologie;
 

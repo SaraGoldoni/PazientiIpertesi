@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="668.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.VisDatiController">
    <children>
-      <BarChart fx:id="barchart" layoutX="134.0" layoutY="487.0" prefHeight="124.0" prefWidth="177.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <LineChart fx:id="line" layoutX="529.0" layoutY="487.0" prefHeight="129.0" prefWidth="146.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-      <TabPane fx:id="tab" layoutX="42.0" layoutY="35.0" prefHeight="393.0" prefWidth="799.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="21.0" prefHeight="610.0" prefWidth="847.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="patologie" text="Patologie">
+          <Tab text="Dati Generali">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listapatologie" layoutX="10.0" layoutY="5.0" prefHeight="346.0" prefWidth="782.0" />
-                     </children>
-                  </AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-          <Tab fx:id="terapieconc" text="Terapie concomitanti">
+          <Tab text="Rilevazioni giornaliere">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listaterapie" prefHeight="340.0" prefWidth="782.0" />
-                     </children>
-                  </AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
+            <Tab text="Riassunto">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Patologie">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

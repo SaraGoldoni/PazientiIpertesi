@@ -5,52 +5,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="utente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="671.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+<AnchorPane fx:id="utente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="621.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
     <children>
-        <Button layoutX="253.0" layoutY="44.0" mnemonicParsing="false" onAction="#SwitchToMemo" prefHeight="55.0" prefWidth="347.0" text="Rilevazione pressione" AnchorPane.leftAnchor="252.8" AnchorPane.rightAnchor="338.0">
+        <Button layoutX="56.0" layoutY="139.0" mnemonicParsing="false" onAction="#SwitchToMemo" prefHeight="117.0" prefWidth="375.0" text="Rilevazione pressione">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-        <Button layoutX="253.0" layoutY="254.0" mnemonicParsing="false" onAction="#SwitchToSintomo" prefHeight="35.0" prefWidth="347.0" text="Sintomi" AnchorPane.leftAnchor="252.8" AnchorPane.rightAnchor="338.00000000000006">
+        <Button layoutX="56.0" layoutY="379.0" mnemonicParsing="false" onAction="#SwitchToSintomo" prefHeight="118.0" prefWidth="375.0" text="Sintomi">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-        <Button layoutX="250.0" layoutY="390.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="354.0" text="Patologie" AnchorPane.leftAnchor="252.8" AnchorPane.rightAnchor="334.0" AnchorPane.topAnchor="390.0">
+        <Button layoutX="527.0" layoutY="379.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="375.0" text="Patologie" AnchorPane.topAnchor="379.0">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-        <Label layoutX="14.0" layoutY="14.0" text="Inserisci dati giornalieri:" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="592.0">
+        <Label layoutX="56.0" layoutY="63.0" text="Inserisci dati giornalieri:" AnchorPane.leftAnchor="56.0" AnchorPane.rightAnchor="550.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Button layoutX="253.0" layoutY="132.0" mnemonicParsing="false" onAction="#SwitchToFarmaco" prefHeight="55.0" prefWidth="347.0" text="Farmaci" AnchorPane.leftAnchor="252.8" AnchorPane.rightAnchor="338.0">
+        <Button layoutX="527.0" layoutY="139.0" mnemonicParsing="false" onAction="#SwitchToFarmaco" prefHeight="118.0" prefWidth="375.0" text="Farmaci">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
-        <Label layoutX="14.0" layoutY="206.0" text="Inserisci sintomi:" AnchorPane.topAnchor="206.0">
+        <Label layoutX="56.0" layoutY="312.0" text="Inserisci sintomi:" AnchorPane.topAnchor="312.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="14.0" layoutY="355.0" text="Inserisci patologie:" AnchorPane.bottomAnchor="280.6" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="636.0" AnchorPane.topAnchor="355.0">
+        <Label layoutX="527.0" layoutY="309.0" text="Inserisci patologie:" AnchorPane.bottomAnchor="326.6" AnchorPane.leftAnchor="527.0" AnchorPane.rightAnchor="123.0" AnchorPane.topAnchor="309.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="14.0" layoutY="504.0" text="Inserisci Terapia:">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Button layoutX="250.0" layoutY="545.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="354.0" text="Terapia" AnchorPane.leftAnchor="252.8" AnchorPane.rightAnchor="338.00000000000006">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Button>
     </children>
 </AnchorPane>
