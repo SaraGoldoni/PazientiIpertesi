@@ -172,7 +172,7 @@ public class PazienteController implements Initializable{
     @FXML
     private TextArea DescrizioneSintomo;
     @FXML
-    public void InsertSintomo(ActionEvent event) throws SQLException{
+    public void InsertSintomo() throws SQLException{
         //String querySintomo = ("INSERT INTO \"Dati\".sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
         String querySintomo = ("INSERT INTO pazientiipertesi.sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
         try (PreparedStatement ps = c.prepareStatement(querySintomo)) {

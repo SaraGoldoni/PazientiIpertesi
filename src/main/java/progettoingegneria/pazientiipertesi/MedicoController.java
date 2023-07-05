@@ -24,6 +24,7 @@ import org.controlsfx.control.PropertySheet;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class MedicoController implements Initializable{
@@ -77,9 +78,19 @@ public class MedicoController implements Initializable{
 
     }
 
-    public void VisualizzaDati(ActionEvent event) throws IOException {
-        Controller.Switch("VisDati.fxml", event);
-        //initialize(null,null);
+    public void VisualizzaDati(ActionEvent event) throws IOException, SQLException, InterruptedException {
+        String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VisDati.fxml"));
+        Parent root = loader.load();
+        VisDatiController controller = loader.getController();
+        controller.displayCF(cfpaztab);
+        controller.setInfoGenerali();
+        controller.inizializzaLista();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     /**
@@ -118,5 +129,6 @@ public class MedicoController implements Initializable{
         B.setVisible(true);
         C.setVisible(true);
     }
+
 
 }
