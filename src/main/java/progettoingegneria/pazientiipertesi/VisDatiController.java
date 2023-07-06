@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 
 import java.beans.PropertyChangeEvent;
@@ -24,18 +25,22 @@ public class VisDatiController {
 @FXML
 private Label codicefiscale, nome, cognome, dataDiNascita, labelfattore;
 @FXML
-private ListView<String> listafattoririschio;
+private ListView<String> listafattoririschio, listapatologiepregresse, listapatologieconcomitanti;
 @FXML
 private TextField nomefattore;
 @FXML
 private Button inseriscifattore;
+@FXML
+private TextArea descrizionesegnalazione;
+@FXML
+private LineChart<Date , Integer> andaturasettimanale;
 ObservableList<String> fattoririschio = FXCollections.observableArrayList();
-ObservableList<String> fattoririschio1 = FXCollections.observableArrayList();
+DatabaseConnection conn = new DatabaseConnection();
+Connection c = conn.link();
+
 public void displayCF (String codiceFiscale){
         codicefiscale.setText(codiceFiscale);
     }
-    DatabaseConnection conn = new DatabaseConnection();
-    Connection c = conn.link();
 public void setInfoGenerali() throws SQLException {
     String Query = ("SELECT * FROM pazientiipertesi.Paziente where codicefiscale = ?");
     PreparedStatement p = c.prepareStatement(Query);
@@ -89,5 +94,40 @@ public void inizializzaLista() throws SQLException, IOException {
 
 }
 
-
+public void inizilizzapatologiaPreg() throws SQLException {
+    String querypatpre = ("SELECT * FROM pazientiipertesi.anamnesiterapie WHERE paziente = ? AND tipo = 'pregressa'");
+    PreparedStatement psst = c.prepareStatement(querypatpre);
+    psst.setString(1, codicefiscale.getText());
+    ResultSet rs = psst.executeQuery();
+    while (rs.next()){
+        listapatologiepregresse.getItems().add(rs.getString(1));
+        listapatologiepregresse.getItems().add(rs.getString(3));
+    }
 }
+public void inizilizzapatologiaConc() throws SQLException {
+        String querypatconc = ("SELECT * FROM pazientiipertesi.anamnesiterapie WHERE paziente = ? AND tipo = 'concomitante'");
+        PreparedStatement psst = c.prepareStatement(querypatconc);
+        psst.setString(1, codicefiscale.getText());
+        ResultSet rs = psst.executeQuery();
+        while (rs.next()){
+            listapatologieconcomitanti.getItems().add(rs.getString(1));
+            listapatologieconcomitanti.getItems().add(rs.getString(3));
+        }
+    }
+public void inizializzasegnalazione() throws SQLException {
+        String querysegnalazione = ("SELECT * FROM pazientiipertesi.sintomo WHERE paziente = ? AND data = ?");
+        PreparedStatement psst = c.prepareStatement(querysegnalazione);
+        Date d = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+        psst.setString(1, codicefiscale.getText());
+        psst.setDate(2, sqlDate);
+        ResultSet rs = psst.executeQuery();
+        while (rs.next()) {
+            descrizionesegnalazione.setText(rs.getString(4));
+        }
+    }
+/*public void inizializzagraficosettimanale(){
+    XYChart.Series series = new XYChart.Series<>();
+    }*/
+}
+

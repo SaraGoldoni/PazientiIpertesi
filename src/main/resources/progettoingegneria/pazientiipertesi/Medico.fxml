@@ -7,15 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
+<AnchorPane prefHeight="605.0" prefWidth="949.0" style="-fx-background-color: #e6f2ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <TableView fx:id="tabPazienti" layoutX="131.0" layoutY="14.0" onMouseClicked="#Visibile" prefHeight="494.0" prefWidth="688.0" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="130.0">
+      <TableView fx:id="tabPazienti" layoutX="137.0" layoutY="13.0" onMouseClicked="#Visibile" prefHeight="494.0" prefWidth="700.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="112.0">
         <columns>
-            <TableColumn fx:id="CF" minWidth="-Infinity" prefWidth="215.20001220703125" text="Codice fiscale" />
-          <TableColumn fx:id="Nome" minWidth="-Infinity" prefWidth="120.800048828125" text="Nome" />
-          <TableColumn fx:id="Cognome" minWidth="-Infinity" prefWidth="139.20004272460938" text="Cognome" />
-            <TableColumn fx:id="referente" minWidth="-Infinity" prefWidth="210.39996337890625" text="Referente" />
+            <TableColumn fx:id="CF" editable="false" minWidth="-Infinity" prefWidth="223.99998474121094" text="Codice fiscale" />
+          <TableColumn fx:id="Nome" editable="false" minWidth="-Infinity" prefWidth="118.4000244140625" text="Nome" />
+          <TableColumn fx:id="Cognome" editable="false" minWidth="-Infinity" prefWidth="139.20004272460938" text="Cognome" />
+            <TableColumn fx:id="referente" editable="false" minWidth="-Infinity" prefWidth="216.0" text="Referente" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <Button fx:id="A" layoutX="24.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="62.0" prefWidth="281.0" style="-fx-background-radius: 12;" text="Inserisci nuova terapia" visible="false">
          <font>

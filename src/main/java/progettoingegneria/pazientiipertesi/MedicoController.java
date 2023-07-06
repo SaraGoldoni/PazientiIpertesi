@@ -86,6 +86,9 @@ public class MedicoController implements Initializable{
         controller.displayCF(cfpaztab);
         controller.setInfoGenerali();
         controller.inizializzaLista();
+        controller.inizilizzapatologiaPreg();
+        controller.inizilizzapatologiaConc();
+        controller.inizializzasegnalazione();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

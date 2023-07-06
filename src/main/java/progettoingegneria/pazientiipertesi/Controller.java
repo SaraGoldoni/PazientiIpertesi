@@ -31,6 +31,8 @@ public class Controller{
     @FXML
     private Button Accedi;
     static String nomeutente;
+    @FXML
+            private DialogPane prova;
 
 
     DatabaseConnection conn = new DatabaseConnection();
@@ -59,7 +61,6 @@ public class Controller{
         Connection c = conn.link();
         String CF=getNomeUtente();
         ResultSet rs;
-
         String query = ("SELECT medico FROM PazientiIpertesi.Login where NomeUtente=?");
         PreparedStatement pstmt = c.prepareStatement(query);
         pstmt.setString(1, CF);
@@ -99,23 +100,32 @@ public class Controller{
             nomeutente = username.getText();
             System.out.println(nomeutente);
             pass = password.getText();
-
+            boolean flag = false;
             while (rs.next()) {
                 if (rs.getString(1).equals("00000")&&(rs.getString(2).equals(pass))){
                     Switch("Responsabile.fxml", event);
-
+                    flag = true;
 
                 } else if ((rs.getString(1).equals(nomeutente)) && (rs.getString(2).equals(pass))) {
                     if (rs.getInt(3) == 1) {
                         Switch("Medico.fxml",event);
+                        flag = true;
 
                     } else {
 
                         Switch("Paziente.fxml", event);
-
+                        flag = true;
                     }
                 }
+
             }
+            if (!flag) {
+                alert.setHeaderText("Errore di autenticazione");
+                alert.setContentText("Nome utente o password errati");
+                alert.show();
+
+            }
+
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
