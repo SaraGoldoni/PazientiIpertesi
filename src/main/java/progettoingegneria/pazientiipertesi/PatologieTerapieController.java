@@ -7,6 +7,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.*;
 
 
@@ -16,7 +17,7 @@ public class PatologieTerapieController {
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
     @FXML
-    public TextField patologia;
+    private TextField patologia;
     @FXML
     private RadioButton PatPregressa;
     @FXML
@@ -87,6 +88,9 @@ public class PatologieTerapieController {
 
             ps.executeUpdate();
             c.commit();
-}
+        }
+    }
+    public void indietro(ActionEvent event) throws IOException {
+        Controller.Switch("Paziente.fxml",event);
 }
 }

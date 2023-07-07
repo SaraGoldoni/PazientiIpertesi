@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -18,11 +18,12 @@
                <children>
                   <Label layoutX="58.0" layoutY="30.0" prefHeight="17.0" prefWidth="183.0" text="Inserisci nome patologia:" />
                   <TextField fx:id="patologia" layoutX="327.0" layoutY="26.0" />
-                  <RadioButton fx:id="PatConcomitante" layoutX="299.0" layoutY="83.0" mnemonicParsing="false" text="Concomitante" />
-                  <RadioButton fx:id="PatPregressa" layoutX="169.0" layoutY="83.0" mnemonicParsing="false" text="Pregressa" />
                   <Label layoutX="58.0" layoutY="150.0" prefHeight="17.0" prefWidth="216.0" text="Ulteriori informazioni:" />
                   <TextArea fx:id="PatInformazioni" layoutX="70.0" layoutY="175.0" prefHeight="107.0" prefWidth="466.0" />
                   <Button layoutX="420.0" layoutY="300.0" mnemonicParsing="false" onAction="#InsPatologia" text="Inserisci Patologia" />
+                  <Button layoutX="85.0" layoutY="300.0" mnemonicParsing="false" onAction="#indietro" prefHeight="25.0" prefWidth="107.0" text="Indietro" />
+                  <Label layoutX="56.0" layoutY="86.0" prefHeight="17.0" prefWidth="173.0" text="Selezionare il tipo di patologia:" />
+                  <ChoiceBox fx:id="ChoicePatologia" layoutX="327.0" layoutY="82.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </content></TitledPane>
@@ -31,16 +32,17 @@
             <AnchorPane prefHeight="391.0" prefWidth="598.0">
                <children>
                   <Label layoutX="62.0" layoutY="31.0" prefHeight="17.0" prefWidth="232.0" text="Inserisci nome del farmaco:" />
-                  <TextField fx:id="FarmacoTerapia" layoutX="299.0" layoutY="27.0" />
+                  <TextField fx:id="FarmacoTerapia" layoutX="292.0" layoutY="27.0" prefHeight="25.0" prefWidth="172.0" />
                   <DatePicker fx:id="TerapiaDataInizio" layoutX="292.0" layoutY="117.0" />
                   <DatePicker fx:id="TerapiaDataFine" layoutX="292.0" layoutY="153.0" promptText="*Se pregressa" />
                   <Label layoutX="62.0" layoutY="121.0" prefHeight="17.0" prefWidth="156.0" text="Inserisci data inizio:" />
                   <Label layoutX="62.0" layoutY="157.0" prefHeight="17.0" prefWidth="132.0" text="Inserisci data fine:" />
-                  <RadioButton fx:id="TerPregressa" layoutX="177.0" layoutY="77.0" mnemonicParsing="false" text="Pregressa" />
-                  <RadioButton fx:id="TerConcomitante" layoutX="299.0" layoutY="77.0" mnemonicParsing="false" text="Concomitante" />
                   <Label layoutX="62.0" layoutY="206.0" text="Ulteriori informazioni:" />
                   <TextArea fx:id="InfoTerapia" layoutX="67.0" layoutY="229.0" prefHeight="81.0" prefWidth="464.0" />
                   <Button layoutX="416.0" layoutY="322.0" mnemonicParsing="false" onAction="#InsTerapia" text="Inserisci Terapia" />
+                  <Button layoutX="99.0" layoutY="322.0" mnemonicParsing="false" onAction="#indietro" prefHeight="25.0" prefWidth="96.0" text="Indietro" />
+                  <Label layoutX="62.0" layoutY="77.0" prefHeight="17.0" prefWidth="159.0" text="Selezionare il tipo di terapia:" />
+                  <ChoiceBox fx:id="ChoiceTerapia" layoutX="292.0" layoutY="73.0" prefHeight="25.0" prefWidth="173.0" />
                </children>
             </AnchorPane>
          </content></TitledPane>

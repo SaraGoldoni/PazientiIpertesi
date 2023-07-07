@@ -101,7 +101,6 @@ public void inizilizzapatologiaPreg() throws SQLException {
     ResultSet rs = psst.executeQuery();
     while (rs.next()){
         listapatologiepregresse.getItems().add(rs.getString(1));
-        listapatologiepregresse.getItems().add(rs.getString(3));
     }
 }
 public void inizilizzapatologiaConc() throws SQLException {

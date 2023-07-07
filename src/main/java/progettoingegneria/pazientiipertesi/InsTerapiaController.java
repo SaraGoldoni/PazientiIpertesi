@@ -51,7 +51,7 @@ public class InsTerapiaController {
             data_I = d_inizio.getValue().toString();
             data_F = d_fine.getValue().toString();
 
-            prst.setString(1, F);
+            prst.setString(1, F.toLowerCase());
             prst.setString(2, codiceFisc.getText());
             prst.setString(3, M);
             prst.setInt(4, A);

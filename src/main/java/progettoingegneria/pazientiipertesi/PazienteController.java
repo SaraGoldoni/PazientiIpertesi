@@ -19,51 +19,46 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PazienteController implements Initializable{
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    @FXML
-    private Button DatiGiornalieri;
-    @FXML
-    private Button SegnalazionePaziente;
-
-    @FXML
-    public ChoiceBox<String> choiceBox = new ChoiceBox<>();
-
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
 
+
+    @FXML
+    private Label MailMedico;
+    private String CFMedico;
+
     /**
-     * Inizializza il ChoiceBox dell'interfaccia con i farmaci relativi al paziente loggato
-     * @param arg0 URL, a null se non si conosce
-     * @param arg1, ResourceBundle, a null se non si conosce
+     * Inizializza la scena con il contatto del medico di riferimento
+     * @param arg0, URL
+     * @param arg1, ResourceBundle
      */
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1){
+    public void initialize(URL arg0, ResourceBundle arg1) {
 
-        String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
+        String query1 = ("SELECT referente FROM pazientiipertesi.Paziente WHERE codicefiscale=?");
+        try (PreparedStatement pst = c.prepareStatement(query1)) {
+            String cf_paz_terapia = Controller.getCFPaziente();
+            pst.setString(1, cf_paz_terapia);
+            ResultSet rs = pst.executeQuery();
 
-            try(PreparedStatement pst = c.prepareStatement(query)){
-                String cf_paz_terapia = Controller.getCFPaziente();
-                pst.setString(1, cf_paz_terapia);
-                ResultSet rs = pst.executeQuery();
+            rs.next();
+            CFMedico=rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-                while(rs.next()){
-                   String farmaco= rs.getString(1);
-                    choiceBox.getItems().add(farmaco);
-                    choiceBox.setOnAction(this::getFarmaco);
-                }
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
+        String query2=("SELECT email FROM pazientiipertesi.Medico WHERE codicefiscale=?");
+        try (PreparedStatement pst = c.prepareStatement(query2)) {
+            pst.setString(1, CFMedico);
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            MailMedico.setText(rs.getString(1));
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String getFarmaco(ActionEvent event){
-        return choiceBox.getValue();
 
-    }
 
     /**
      * Cambia la visualizzazione verso l'inserimento delle memorizzazioni giornaliere di pressione
@@ -72,131 +67,35 @@ public class PazienteController implements Initializable{
      */
     @FXML
     public void SwitchToMemo(ActionEvent event) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("MemoGiornaliere.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+       Controller.Switch("MemoGiornaliere", event);
     }
 
-
     /**
-     * Inserisce i dati relativi alle assunzioni del farmaco selezionato
-     * @param event schiacciare il pulsante
+     * Switch alla pagina di inserimento della terapia per il paziente
+     * @param event, pressione del bottone
      * @throws IOException
      */
     public void SwitchToFarmaco(ActionEvent event) throws IOException {
         Controller.Switch("InserimentoFarmaco.fxml", event);
-
     }
-
-    @FXML
-    private TextField OraFarmaco;
-    @FXML
-    private TextField quantita;
-    @FXML
-    private TextField NumeroAssunzioni;
-    public void InserisciFarmaco(ActionEvent event) throws SQLException, ParseException {
-        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?, ?)");
-        String NomeFarmaco = getFarmaco(event);
-        Time ora = Time.valueOf(OraFarmaco.getText());
-        //DateFormat orachange = new SimpleDateFormat("hh:mm");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataAssunzione = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(dataAssunzione.getTime());
-
-        int quantitaFarmaco = Integer.parseInt(quantita.getText());
-        int NAssunzioni= Integer.parseInt(NumeroAssunzioni.getText());
-
-
-
-        PreparedStatement stt = c.prepareStatement(queryfarmaco);
-        stt.setString(1, NomeFarmaco);
-        stt.setInt(2, quantitaFarmaco);
-        stt.setDate(3, sqlDate);
-        stt.setInt(4, NAssunzioni);
-        stt.setTime(5, ora);
-        stt.executeUpdate();
-    }
-
-    @FXML
-    private TextField SBP;
-    @FXML
-    private TextField DBP;
-
 
     /**
-     * Inserisce nella tabella di memorizzazione le rilevazioni giornaliere dell'utente.
+     * Switch alla pagina di inserimento di sintomi e segnalazioni
+     * @param event, pressione del pulsante
+     * @throws IOException
      */
-    @FXML
-    public void InsertIntoMemo(ActionEvent event) throws SQLException {
-
-        String query = ("INSERT INTO pazientiipertesi.Pressione(SBP, DBP, data, idpaziente) VALUES (?, ?, ?, ?)");
-        try (PreparedStatement pstmt = c.prepareStatement(query)){
-            c.setAutoCommit(false);
-            int pressioneMassima = Integer.parseInt(SBP.getText());
-            int pressioneMinima = Integer.parseInt(DBP.getText());
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = new Date();
-
-
-
-
-            pstmt.setInt(1, pressioneMassima);
-            pstmt.setInt(2, pressioneMinima);
-            pstmt.setString(3, formatter.format(date));
-            pstmt.setString(4, Controller.getCFPaziente());
-
-            pstmt.executeUpdate();
-            c.commit();
-
-            Controller.Switch("Paziente.fxml",event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void indietro(ActionEvent event) throws IOException {
-        Controller.Switch("Paziente.fxml", event);
-    }
     public void SwitchToSintomo(ActionEvent event) throws IOException {
         Controller.Switch("Sintomi.fxml", event);
-        initialize(null,null);
-    }
-    @FXML
-    private DatePicker DataSintomo;
-    @FXML
-    private TextField NomeSintomo;
-    @FXML
-    private TextArea DescrizioneSintomo;
-    @FXML
-    public void InsertSintomo() throws SQLException{
-        //String querySintomo = ("INSERT INTO \"Dati\".sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
-        String querySintomo = ("INSERT INTO pazientiipertesi.sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
-        try (PreparedStatement ps = c.prepareStatement(querySintomo)) {
-            c.setAutoCommit(false);
-            String cf_paz_sintomo = Controller.getCFPaziente();
-            String DataS = DataSintomo.getValue().toString();
-            String NomeS= NomeSintomo.getText();
-            String DescrizioneS= DescrizioneSintomo.getText();
-
-            ps.setString(1, cf_paz_sintomo);
-            ps.setString(2, NomeS);
-            ps.setDate(3, java.sql.Date.valueOf(DataS));
-            ps.setString(4, DescrizioneS);
-
-            ps.executeUpdate();
-            c.commit();
-        }
     }
 
-
+    /**
+     * Switch alla pagina di inserimento di patologie e terapie concomitanti
+     * @param event, pressione del pulsante
+     * @throws IOException
+     */
+    public void InsPatologieTerapie(ActionEvent event) throws IOException {
+        Controller.Switch("PatologieTerapie.fxml", event);
 }
 
 
-
-
-
-
+}

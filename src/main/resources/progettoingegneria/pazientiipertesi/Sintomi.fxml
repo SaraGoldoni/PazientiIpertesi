@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="569.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+<AnchorPane prefHeight="569.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.SintomiController">
     <children>
         <DatePicker fx:id="DataSintomo" layoutX="441.0" layoutY="54.0" />
         <Label layoutX="39.0" layoutY="46.0" prefHeight="40.0" prefWidth="457.0" text="Inserisci la data in cui si è verificata l'insorgenza del sintomo:" wrapText="true" />

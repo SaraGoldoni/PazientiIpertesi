@@ -65,6 +65,11 @@ public class MedicoController implements Initializable{
 
     }
 
+    /**
+     * Switch alla pagina di modifica della terapia per il paziente selezionato
+     * @param event, pressione del tasto modifica terapia
+     * @throws IOException
+     */
     public void ModificaTerapia(ActionEvent event) throws IOException {
         String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ModTerapia.fxml"));
@@ -127,6 +132,10 @@ public class MedicoController implements Initializable{
 
 
     }
+
+    /**
+     * Rende visibili i bottoni alla pressione di una riga della tabella
+     */
     public void Visibile(){
         A.setVisible(true);
         B.setVisible(true);

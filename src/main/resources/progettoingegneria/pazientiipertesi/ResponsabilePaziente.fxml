@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
+<AnchorPane prefHeight="695.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabilePazienteController">
    <children>
       <Label layoutX="271.0" layoutY="23.0" text="Dati Paziente:">
          <font>
@@ -18,7 +19,6 @@
       <TextField fx:id="cf_paz" layoutX="290.0" layoutY="124.0" prefHeight="32.0" prefWidth="362.0" />
       <TextField fx:id="nome_paz" layoutX="290.0" layoutY="193.0" prefHeight="32.0" prefWidth="362.0" />
       <TextField fx:id="cognome_paz" layoutX="290.0" layoutY="255.0" prefHeight="32.0" prefWidth="362.0" />
-      <TextField fx:id="medico_ref" layoutX="292.0" layoutY="393.0" prefHeight="32.0" prefWidth="362.0" promptText="Codice Fiscale" />
       <Label layoutX="51.0" layoutY="125.0" prefHeight="30.0" prefWidth="144.0" text="Codice Fiscale:">
          <font>
             <Font size="20.0" />
@@ -58,5 +58,6 @@
          </font>
       </Label>
       <DatePicker fx:id="data_nascita_paz" layoutX="292.0" layoutY="323.0" prefHeight="32.0" prefWidth="362.0" />
+      <ChoiceBox fx:id="medico_ref" layoutX="290.0" layoutY="393.0" prefHeight="32.0" prefWidth="362.0" />
    </children>
 </AnchorPane>

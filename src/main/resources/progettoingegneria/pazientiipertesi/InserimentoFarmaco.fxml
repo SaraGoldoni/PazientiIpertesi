@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.PazienteController">
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.InserisciFarmacoController">
    <children>
       <ChoiceBox fx:id="choiceBox" layoutX="229.0" layoutY="148.0" prefHeight="32.0" prefWidth="216.0" AnchorPane.leftAnchor="229.0" AnchorPane.rightAnchor="125.0" />
       <Label layoutX="14.0" layoutY="75.0" prefHeight="17.0" prefWidth="556.0" text="Inserisci dati relativi al farmaco assunto:" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="0.7999999999999545">
@@ -34,7 +34,7 @@
       <TextField fx:id="OraFarmaco" layoutX="227.0" layoutY="210.0" prefHeight="32.0" prefWidth="216.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="127.0" />
       <TextField fx:id="quantita" layoutX="227.0" layoutY="271.0" prefHeight="32.0" prefWidth="216.0" promptText="Numero Pastiglie" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="127.0" />
       <Button layoutX="292.0" layoutY="440.0" mnemonicParsing="false" onAction="#InserisciFarmaco" text="Inserisci" />
-      <Button layoutX="395.0" layoutY="440.0" mnemonicParsing="false" text="Indietro" />
+      <Button layoutX="395.0" layoutY="440.0" mnemonicParsing="false" onAction="#indietro" text="Indietro" />
       <Label layoutX="34.0" layoutY="332.0" prefHeight="27.0" prefWidth="166.0" text="Numero assunzioni:" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="370.4">
          <font>
             <Font size="18.0" />
