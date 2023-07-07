@@ -23,7 +23,7 @@ import java.util.*;
 
 public class VisDatiController {
 @FXML
-private Label codicefiscale, nome, cognome, dataDiNascita, labelfattore;
+private Label codicefiscale, nome, cognome, dataDiNascita, labelfattore,  nomesintomo;
 @FXML
 private ListView<String> listafattoririschio, listapatologiepregresse, listapatologieconcomitanti;
 @FXML
@@ -31,7 +31,7 @@ private TextField nomefattore;
 @FXML
 private Button inseriscifattore;
 @FXML
-private TextArea descrizionesegnalazione;
+private TextArea descrizionesegnalazione, pregressedescrizione, concomitantidescrizione;
 @FXML
 private LineChart<Date , Integer> andaturasettimanale;
 ObservableList<String> fattoririschio = FXCollections.observableArrayList();
@@ -60,7 +60,7 @@ public void inserisciFattoriRischio() throws SQLException, IOException {
     PreparedStatement ps = c.prepareStatement(Query);
     ps.setString(1, codicefiscale.getText());
     ps.setString(2, Controller.getCFMedico());
-    ps.setString(3, nomefattore.getText());
+    ps.setString(3, nomefattore.getText().toLowerCase());
     ps.setDate(4, date);
     ps.execute();
 
@@ -95,22 +95,53 @@ public void inizializzaLista() throws SQLException, IOException {
 }
 
 public void inizilizzapatologiaPreg() throws SQLException {
-    String querypatpre = ("SELECT * FROM pazientiipertesi.anamnesiterapie WHERE paziente = ? AND tipo = 'pregressa'");
+    String patpre;
+    String querypatpre = ("SELECT * FROM pazientiipertesi.anamnesipatologie WHERE paziente = ? AND tipo = 'Pregressa'");
     PreparedStatement psst = c.prepareStatement(querypatpre);
     psst.setString(1, codicefiscale.getText());
     ResultSet rs = psst.executeQuery();
     while (rs.next()){
         listapatologiepregresse.getItems().add(rs.getString(1));
     }
+
 }
+    public void inizializzadescrizionePregressa() throws SQLException {
+        String patpre = listapatologiepregresse.getSelectionModel().getSelectedItem();
+
+        if(!listapatologiepregresse.getItems().isEmpty()){
+            String query1 = ("SELECT informazioni FROM pazientiipertesi.anamnesipatologie WHERE paziente = ? AND tipo = 'Pregressa' AND nomepatologia= ?");
+            PreparedStatement ps = c.prepareStatement(query1);
+            ps.setString(1, codicefiscale.getText());
+            ps.setString(2, patpre);
+            ResultSet rs1;
+            rs1 = ps.executeQuery();
+            rs1.next();
+            pregressedescrizione.setText(rs1.getString(1));
+        }
+    }
 public void inizilizzapatologiaConc() throws SQLException {
-        String querypatconc = ("SELECT * FROM pazientiipertesi.anamnesiterapie WHERE paziente = ? AND tipo = 'concomitante'");
+        String querypatconc = ("SELECT * FROM pazientiipertesi.anamnesipatologie WHERE paziente = ? AND tipo = 'Concomitante'");
         PreparedStatement psst = c.prepareStatement(querypatconc);
         psst.setString(1, codicefiscale.getText());
         ResultSet rs = psst.executeQuery();
         while (rs.next()){
             listapatologieconcomitanti.getItems().add(rs.getString(1));
-            listapatologieconcomitanti.getItems().add(rs.getString(3));
+        }
+
+    }
+    public void inizializzadescrizioneConcomitante() throws SQLException {
+        String patconc = listapatologieconcomitanti.getSelectionModel().getSelectedItem();
+
+
+        if(!listapatologieconcomitanti.getItems().isEmpty()){
+            String query1 = ("SELECT informazioni FROM pazientiipertesi.anamnesipatologie WHERE paziente = ? AND tipo = 'Concomitante' AND nomepatologia= ?");
+            PreparedStatement ps = c.prepareStatement(query1);
+            ps.setString(1, codicefiscale.getText());
+            ps.setString(2, patconc);
+            ResultSet rs1;
+            rs1 = ps.executeQuery();
+            rs1.next();
+            concomitantidescrizione.setText(rs1.getString(1));
         }
     }
 public void inizializzasegnalazione() throws SQLException {
@@ -123,10 +154,12 @@ public void inizializzasegnalazione() throws SQLException {
         ResultSet rs = psst.executeQuery();
         while (rs.next()) {
             descrizionesegnalazione.setText(rs.getString(4));
+            nomesintomo.setText(rs.getString(2));
         }
     }
-/*public void inizializzagraficosettimanale(){
-    XYChart.Series series = new XYChart.Series<>();
-    }*/
+public void inizializzapressioni(){
+    //query per la selezione della pressione giornaliera massima e minima
+
+}
 }
 

@@ -2,26 +2,22 @@ package progettoingegneria.pazientiipertesi;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
 
-public class PatologieTerapieController {
-
-
+public class PatologieTerapieController implements Initializable {
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
     @FXML
     private TextField patologia;
     @FXML
-    private RadioButton PatPregressa;
-    @FXML
-    private RadioButton PatConcomitante;
+    private ChoiceBox<String> ChoicePatologia;
     @FXML
     private TextArea PatInformazioni;
 
@@ -31,16 +27,11 @@ public class PatologieTerapieController {
             c.setAutoCommit(false);
             String cf_paz_sintomo = Controller.getCFPaziente();
             String Pat = patologia.getText();
-            String PatP = PatPregressa.getText();
-            String PatC = PatConcomitante.getText();
             String InfoPat = PatInformazioni.getText();
+            String TipoPatologia=getPatologia(event);
 
             ps.setString(1, Pat);
-            if (PatPregressa.isSelected()) {
-                ps.setString(2, PatP);
-            } else {
-                ps.setString(2, PatC);
-            }
+            ps.setString(2, TipoPatologia);
             ps.setString(3, cf_paz_sintomo);
             ps.setString(4, InfoPat);
 
@@ -52,9 +43,7 @@ public class PatologieTerapieController {
     @FXML
     private TextField FarmacoTerapia;
     @FXML
-    private RadioButton TerPregressa;
-    @FXML
-    private RadioButton TerConcomitante;
+    private ChoiceBox<String> ChoiceTerapia;
     @FXML
     private DatePicker TerapiaDataInizio;
     @FXML
@@ -68,21 +57,19 @@ public class PatologieTerapieController {
             c.setAutoCommit(false);
             String cf_paz_sintomo = Controller.getCFPaziente();
             String FarmacoTer = FarmacoTerapia.getText();
-            String TerP = TerPregressa.getText();
-            String TerC = TerConcomitante.getText();
+            String TipoTerapia=getTerapia(event);
             String DataTerInizio = TerapiaDataInizio.getValue().toString();
             String InfoT = InfoTerapia.getText();
 
             ps.setString(1, FarmacoTer);
-            if (TerPregressa.isSelected()) {
-                ps.setString(2, TerP);
-                String DataTerFine = TerapiaDataFine.getValue().toString();
-                ps.setDate(4, java.sql.Date.valueOf(DataTerFine));
-            } else {
-                ps.setString(2, TerC);
+            ps.setString(2, TipoTerapia);
+            if (TipoTerapia.equals("Concomitante")) {
                 ps.setNull(4, Types.NULL);
+            } else {
+                String DataTerFine = TerapiaDataFine.getValue().toString();
+                ps.setDate(4, Date.valueOf(DataTerFine));
             }
-            ps.setDate(3, java.sql.Date.valueOf(DataTerInizio));
+            ps.setDate(3, Date.valueOf(DataTerInizio));
             ps.setString(5, InfoT);
             ps.setString(6, cf_paz_sintomo);
 
@@ -91,6 +78,23 @@ public class PatologieTerapieController {
         }
     }
     public void indietro(ActionEvent event) throws IOException {
-        Controller.Switch("Paziente.fxml",event);
+        Controller.Switch("Paziente.fxml", event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ChoicePatologia.getItems().addAll("Pregressa", "Concomitante");
+        ChoicePatologia.setOnAction(this::getPatologia);
+
+        ChoiceTerapia.getItems().addAll("Pregressa", "Concomitante");
+        ChoicePatologia.setOnAction(this::getTerapia);
+    }
+    public String getPatologia(ActionEvent event){
+        return ChoicePatologia.getValue();
+
+    }
+    public String getTerapia(ActionEvent event){
+        return ChoiceTerapia.getValue();
+
 }
 }

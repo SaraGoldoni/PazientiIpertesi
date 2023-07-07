@@ -23,7 +23,7 @@
                   <Button layoutX="420.0" layoutY="300.0" mnemonicParsing="false" onAction="#InsPatologia" text="Inserisci Patologia" />
                   <Button layoutX="85.0" layoutY="300.0" mnemonicParsing="false" onAction="#indietro" prefHeight="25.0" prefWidth="107.0" text="Indietro" />
                   <Label layoutX="56.0" layoutY="86.0" prefHeight="17.0" prefWidth="173.0" text="Selezionare il tipo di patologia:" />
-                  <ChoiceBox fx:id="ChoicePatologia" layoutX="327.0" layoutY="82.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="ChoicePatologia" layoutX="327.0" layoutY="82.0" prefHeight="32.0" prefWidth="179.0" />
                </children>
             </AnchorPane>
          </content></TitledPane>
