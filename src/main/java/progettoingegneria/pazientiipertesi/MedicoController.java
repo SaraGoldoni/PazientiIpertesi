@@ -93,11 +93,15 @@ public class MedicoController implements Initializable{
         controller.inizializzaLista();
         controller.inizilizzapatologiaPreg();
         controller.inizilizzapatologiaConc();
-        controller.inizializzasegnalazione();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        //controller.inizializzapressioni();
+        controller.inizializzasegnalazione();
+        if(controller.inizializzapressioni()){
+            controller.setIpertensione();
+        }
 
     }
 

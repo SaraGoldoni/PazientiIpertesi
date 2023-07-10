@@ -66,8 +66,8 @@ public class PazienteController implements Initializable{
      * @throws IOException
      */
     @FXML
-    public void SwitchToMemo(ActionEvent event) throws IOException {
-       Controller.Switch("MemoGiornaliere", event);
+    public void SwitchToMemo(ActionEvent event) throws IOException, SQLException {
+       Controller.Switch("MemoGiornaliere.fxml", event);
     }
 
     /**

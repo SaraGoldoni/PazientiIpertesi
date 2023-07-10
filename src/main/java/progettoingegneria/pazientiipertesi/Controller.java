@@ -112,7 +112,23 @@ public class Controller{
                         flag = true;
 
                     } else {
-
+                       /* String query = ("SELECT data FROM pazientiipertesi.pressione WHERE idpaziente = ?");
+                        PreparedStatement p = c.prepareStatement(query);
+                        p.setString(1, Controller.getCFPaziente());
+                        ResultSet rs1 = p.executeQuery();
+                        java.util.Date data = new java.util.Date();
+                        java.sql.Date sqlDate = new java.sql.Date(data.getTime());
+                        int counter = 0;
+                        while(rs1.next()){
+                            if(!(rs1.getDate(1).equals(sqlDate))){
+                                counter++;
+                                if(counter == 3){
+                                    Alert a = new Alert(Alert.AlertType.INFORMATION);
+                                    a.setContentText("Non hai ancora inserito\n la rilevazione di pressione giornaliera");
+                                    a.show();
+                                }
+                            }
+                        }*/
                         Switch("Paziente.fxml", event);
                         flag = true;
                     }

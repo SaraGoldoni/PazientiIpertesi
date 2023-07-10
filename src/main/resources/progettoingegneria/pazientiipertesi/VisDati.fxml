@@ -49,7 +49,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="cognome" layoutX="281.0" layoutY="138.0" prefHeight="27.0" prefWidth="257.0">
+                        <Label fx:id="cognome" layoutX="267.0" layoutY="138.0" prefHeight="27.0" prefWidth="257.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -59,7 +59,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="dataDiNascita" layoutX="278.0" layoutY="184.0" prefHeight="27.0" prefWidth="258.0">
+                        <Label fx:id="dataDiNascita" layoutX="267.0" layoutY="184.0" prefHeight="27.0" prefWidth="242.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -77,7 +77,9 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="inseriscifattore" layoutX="623.0" layoutY="527.0" mnemonicParsing="false" onAction="#inserisciFattoriRischio" text="Inserisci" visible="false" />
+                        <Button fx:id="inseriscifattore" layoutX="553.0" layoutY="527.0" mnemonicParsing="false" onAction="#inserisciFattoriRischio" text="Inserisci" visible="false" />
+                        <Button layoutX="62.0" layoutY="420.0" mnemonicParsing="false" onAction="#eliminaFattore" prefHeight="32.0" prefWidth="229.0" text="Elimina fattore di rischio" />
+                        <Button layoutX="638.0" layoutY="527.0" mnemonicParsing="false" text="Indietro" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -137,10 +139,36 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Label layoutX="34.0" layoutY="51.0" text="Massima" />
-                                          <Label layoutX="34.0" layoutY="95.0" text="Minima" />
-                                          <Label fx:id="massima" layoutX="313.0" layoutY="51.0" prefHeight="22.0" prefWidth="40.0" />
-                                          <Label fx:id="minima" layoutX="313.0" layoutY="95.0" prefHeight="22.0" prefWidth="41.0" />
+                                          <Label layoutX="34.0" layoutY="54.0" text="Massima:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                          <Label layoutX="34.0" layoutY="98.0" text="Minima:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                          <Label fx:id="massima" layoutX="161.0" layoutY="54.0" prefHeight="22.0" prefWidth="40.0" text="a">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                          <Label fx:id="minima" layoutX="161.0" layoutY="98.0" prefHeight="22.0" prefWidth="41.0" text="a">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                          <Label layoutX="34.0" layoutY="156.0" text="Tipo di ipertensione:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="tipoipertensione" layoutX="302.0" layoutY="156.0" prefHeight="22.0" prefWidth="253.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lieve" layoutX="225.0" layoutY="158.0" prefHeight="22.0" prefWidth="23.0" style="-fx-background-radius: 50; -fx-background-color: yellow;" visible="false" />
+                                          <Label fx:id="moderata" layoutX="225.0" layoutY="158.0" prefHeight="22.0" prefWidth="23.0" style="-fx-background-radius: 50; -fx-background-color: orange;" visible="false" />
+                                          <Label fx:id="grave" layoutX="225.0" layoutY="158.0" prefHeight="22.0" prefWidth="23.0" style="-fx-background-radius: 50; -fx-background-color: red;" visible="false" />
+                                          <Label fx:id="borderline" layoutX="225.0" layoutY="158.0" prefHeight="22.0" prefWidth="23.0" style="-fx-background-radius: 50; -fx-background-color: green;" visible="false" />
                                        </children></AnchorPane>
                               </content>
                             </TitledPane>

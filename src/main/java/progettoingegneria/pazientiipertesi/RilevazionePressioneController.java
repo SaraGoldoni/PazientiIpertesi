@@ -35,17 +35,20 @@ public class RilevazionePressioneController {
             int pressioneMinima = Integer.parseInt(DBP.getText());
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
             ControlliVari valore = new ControlliVari();
             String v  = valore.controlloPressione(pressioneMassima,pressioneMinima);
 
 
             pstmt.setInt(1, pressioneMassima);
             pstmt.setInt(2, pressioneMinima);
-            pstmt.setString(3, formatter.format(date));
+            pstmt.setDate(3, sqlDate);
             pstmt.setString(4, Controller.getCFPaziente());
             pstmt.setString(5, v);
             pstmt.executeUpdate();
             c.commit();
+
 
             Controller.Switch("Paziente.fxml",event);
         } catch (IOException e) {
@@ -53,4 +56,7 @@ public class RilevazionePressioneController {
         }
     }
 
+    public void indietro(ActionEvent event) throws IOException {
+        Controller.Switch("Paziente.fxml", event);
+    }
 }
