@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,8 +32,6 @@ public class Controller{
     @FXML
     private Button Accedi;
     static String nomeutente;
-    @FXML
-            private DialogPane prova;
 
 
     DatabaseConnection conn = new DatabaseConnection();
@@ -77,6 +76,7 @@ public class Controller{
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -98,7 +98,6 @@ public class Controller{
             rs = st.executeQuery("SELECT * FROM PazientiIpertesi.Login");
             String pass;
             nomeutente = username.getText();
-            System.out.println(nomeutente);
             pass = password.getText();
             boolean flag = false;
             while (rs.next()) {
@@ -112,25 +111,34 @@ public class Controller{
                         flag = true;
 
                     } else {
-                       /* String query = ("SELECT data FROM pazientiipertesi.pressione WHERE idpaziente = ?");
-                        PreparedStatement p = c.prepareStatement(query);
-                        p.setString(1, Controller.getCFPaziente());
-                        ResultSet rs1 = p.executeQuery();
-                        java.util.Date data = new java.util.Date();
-                        java.sql.Date sqlDate = new java.sql.Date(data.getTime());
-                        int counter = 0;
-                        while(rs1.next()){
-                            if(!(rs1.getDate(1).equals(sqlDate))){
-                                counter++;
-                                if(counter == 3){
-                                    Alert a = new Alert(Alert.AlertType.INFORMATION);
-                                    a.setContentText("Non hai ancora inserito\n la rilevazione di pressione giornaliera");
-                                    a.show();
-                                }
-                            }
-                        }*/
                         Switch("Paziente.fxml", event);
                         flag = true;
+
+                        String query = ("SELECT data FROM pazientiipertesi.pressione WHERE idpaziente = ? and data = CURRENT_DATE");
+                        PreparedStatement p = c.prepareStatement(query);
+
+                        p.setString(1, Controller.getCFPaziente());
+                        ResultSet rs1 = p.executeQuery();
+
+                       if(!rs1.next()){
+                            Alert a = new Alert(Alert.AlertType.INFORMATION);
+                            a.setContentText("Non hai ancora inserito\n la rilevazione di pressione giornaliera");
+                            a.show();
+                        }
+                        String query2 = ("SELECT data FROM pazientiipertesi.rilevazionefarmaco WHERE paziente = ? and data = CURRENT_DATE");
+                        PreparedStatement p2 = c.prepareStatement(query2);
+
+                        p2.setString(1, Controller.getCFPaziente());
+                        ResultSet rs2 = p2.executeQuery();
+
+                        if(!rs2.next()){
+                            Alert a = new Alert(Alert.AlertType.INFORMATION);
+                            a.setContentText("Non hai ancora inserito i farmaci\n relativi alle terapie seguite");
+                            a.show();
+                        }
+
+
+
                     }
                 }
 

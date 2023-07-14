@@ -7,12 +7,12 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ResponsabileController">
    <children>
-      <Button layoutX="130.0" layoutY="212.0" mnemonicParsing="false" onAction="#NewPaziente" prefHeight="78.0" prefWidth="553.0" text="Paziente">
+      <Button layoutX="130.0" layoutY="212.0" mnemonicParsing="false" onAction="#NewPaziente" prefHeight="78.0" prefWidth="553.0" style="-fx-background-radius: 15;" text="Paziente">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="130.0" layoutY="361.0" mnemonicParsing="false" onAction="#NewMedico" prefHeight="78.0" prefWidth="553.0" text="Medico">
+      <Button layoutX="130.0" layoutY="361.0" mnemonicParsing="false" onAction="#NewMedico" prefHeight="78.0" prefWidth="553.0" style="-fx-background-radius: 15;" text="Medico">
          <font>
             <Font size="36.0" />
          </font>

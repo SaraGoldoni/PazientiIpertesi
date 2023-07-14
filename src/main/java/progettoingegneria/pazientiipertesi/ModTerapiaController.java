@@ -32,26 +32,25 @@ public class ModTerapiaController {
     @FXML
     private Label assgiornaliere, quantita, data_i, data_f, indicazioni;
     @FXML
-    public TextField cfpaz;
+    public Label cfpaz;
     DatabaseConnection conn = new DatabaseConnection();
     Connection c = conn.link();
     public void displayCF (String codiceFiscale){
         cfpaz.setText(codiceFiscale);
     }
 
-    public void prova(){
-        System.out.println(cfpaz.getText());
-    }
 
-    public String getFarmaco(ActionEvent event){
+
+    public String getFarmaco(){
         return selterapia.getValue();
     }
     public void ModificaTerapia(ActionEvent event) throws SQLException {
        String query2= "UPDATE pazientiipertesi.Terapia SET farmaco = ?, paziente = ?, medico = ?, assunzioni = ?, quantità =?, indicazioni = ?, data_inizio=?, data_fine=? WHERE ((Paziente = ?) AND (farmaco = ?))";
 
        PreparedStatement p = c.prepareStatement(query2);
+
         c.setAutoCommit(false);
-        p.setString(1, getFarmaco(event));
+        p.setString(1, getFarmaco());
         p.setString(2, cfpaz.getText());
         p.setString(3, Controller.getCFMedico());
         p.setInt(4,Integer.parseInt(Assunzioni.getText()));
@@ -60,8 +59,9 @@ public class ModTerapiaController {
         p.setDate(7, Date.valueOf(d_inizio.getValue().toString()));
         p.setDate(8, Date.valueOf(d_fine.getValue().toString()));
         p.setString(9, cfpaz.getText());
-        p.setString(10, getFarmaco(event));
+        p.setString(10, getFarmaco());
         p.executeUpdate();
+
 
         c.commit();
     }
@@ -69,7 +69,7 @@ public class ModTerapiaController {
         Controller.Switch("Medico.fxml", event);
     }
 
-    public void fill(javafx.scene.input.MouseEvent event) {
+    public void fill() {
       ObservableList<String> list = FXCollections.observableArrayList();
       if (selterapia.getItems().isEmpty()){
             String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
@@ -91,6 +91,27 @@ public class ModTerapiaController {
       }
     }
 
+    /*public void inizializzaTerapiaToMod() throws SQLException, InterruptedException {
+        String farmaco = getFarmaco();
+        while(farmaco == null) {
+            farmaco= getFarmaco();
+        }
+            String query = ("SELECT *  FROM pazientiipertesi.Terapia where paziente = ? AND farmaco = ?");
+            c.setAutoCommit(false);
+            PreparedStatement p = c.prepareStatement(query);
+            p.setString(1, cfpaz.getText());
+            p.setString(2, selterapia.getValue());
+            ResultSet rs = p.executeQuery();
+
+            Assunzioni.setText(rs.getString(4));
+            Quantita.setText(rs.getString(5));
+            d_inizio.setAccessibleText(rs.getString(7));
+            d_fine.setAccessibleText(rs.getString(8));
+            c.commit();
+        }*/
+
+
+    }
 
 
    /* public void Visibile(){
@@ -112,5 +133,5 @@ public class ModTerapiaController {
 
     }*/
 
-}
+
 

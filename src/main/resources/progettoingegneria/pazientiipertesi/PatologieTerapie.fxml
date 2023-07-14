@@ -22,14 +22,14 @@
                   <TextArea fx:id="PatInformazioni" layoutX="70.0" layoutY="175.0" prefHeight="107.0" prefWidth="466.0" />
                   <Button layoutX="420.0" layoutY="300.0" mnemonicParsing="false" onAction="#InsPatologia" text="Inserisci Patologia" />
                   <Button layoutX="85.0" layoutY="300.0" mnemonicParsing="false" onAction="#indietro" prefHeight="25.0" prefWidth="107.0" text="Indietro" />
-                  <Label layoutX="56.0" layoutY="86.0" prefHeight="17.0" prefWidth="173.0" text="Selezionare il tipo di patologia:" />
+                  <Label layoutX="56.0" layoutY="86.0" prefHeight="22.0" prefWidth="214.0" text="Selezionare il tipo di patologia:" />
                   <ChoiceBox fx:id="ChoicePatologia" layoutX="327.0" layoutY="82.0" prefHeight="32.0" prefWidth="179.0" />
                </children>
             </AnchorPane>
          </content></TitledPane>
-      <TitledPane animated="false" text="Inserisci Terapia:">
+      <TitledPane animated="false" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="626.0" text="Inserisci Terapia:">
          <content>
-            <AnchorPane prefHeight="391.0" prefWidth="598.0">
+            <AnchorPane prefHeight="362.0" prefWidth="598.0">
                <children>
                   <Label layoutX="62.0" layoutY="31.0" prefHeight="17.0" prefWidth="232.0" text="Inserisci nome del farmaco:" />
                   <TextField fx:id="FarmacoTerapia" layoutX="292.0" layoutY="27.0" prefHeight="25.0" prefWidth="172.0" />
@@ -41,7 +41,7 @@
                   <TextArea fx:id="InfoTerapia" layoutX="67.0" layoutY="229.0" prefHeight="81.0" prefWidth="464.0" />
                   <Button layoutX="416.0" layoutY="322.0" mnemonicParsing="false" onAction="#InsTerapia" text="Inserisci Terapia" />
                   <Button layoutX="99.0" layoutY="322.0" mnemonicParsing="false" onAction="#indietro" prefHeight="25.0" prefWidth="96.0" text="Indietro" />
-                  <Label layoutX="62.0" layoutY="77.0" prefHeight="17.0" prefWidth="159.0" text="Selezionare il tipo di terapia:" />
+                  <Label layoutX="62.0" layoutY="77.0" prefHeight="22.0" prefWidth="210.0" text="Selezionare il tipo di terapia:" />
                   <ChoiceBox fx:id="ChoiceTerapia" layoutX="292.0" layoutY="73.0" prefHeight="25.0" prefWidth="173.0" />
                </children>
             </AnchorPane>

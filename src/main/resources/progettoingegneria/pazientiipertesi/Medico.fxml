@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="949.0" style="-fx-background-color: #e6f2ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
+<AnchorPane prefHeight="605.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.MedicoController">
    <children>
-      <TableView fx:id="tabPazienti" layoutX="137.0" layoutY="13.0" onMouseClicked="#Visibile" prefHeight="494.0" prefWidth="700.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="112.0">
+      <TableView fx:id="tabPazienti" layoutX="135.0" layoutY="33.0" onMouseClicked="#Visibile" prefHeight="466.0" prefWidth="680.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="134.0">
         <columns>
             <TableColumn fx:id="CF" editable="false" minWidth="-Infinity" prefWidth="223.99998474121094" text="Codice fiscale" />
           <TableColumn fx:id="Nome" editable="false" minWidth="-Infinity" prefWidth="118.4000244140625" text="Nome" />
@@ -20,17 +20,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="A" layoutX="24.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="62.0" prefWidth="281.0" style="-fx-background-radius: 12;" text="Inserisci nuova terapia" visible="false">
+      <Button fx:id="A" layoutX="42.0" layoutY="531.0" mnemonicParsing="false" onAction="#SwitchToTerapia" prefHeight="51.0" prefWidth="252.0" style="-fx-background-radius: 12;" text="Inserisci nuova terapia" visible="false">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Button fx:id="B" layoutX="349.0" layoutY="521.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Modifica terapia" visible="false">
+      <Button fx:id="B" layoutX="349.0" layoutY="531.0" mnemonicParsing="false" onAction="#ModificaTerapia" prefHeight="51.0" prefWidth="252.0" style="-fx-background-radius: 12;" text="Modifica terapia" visible="false">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Button fx:id="C" layoutX="648.0" layoutY="521.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="62.0" prefWidth="282.0" style="-fx-background-radius: 12;" text="Visualizza dati paziente" visible="false">
+      <Button fx:id="C" layoutX="652.0" layoutY="531.0" mnemonicParsing="false" onAction="#VisualizzaDati" prefHeight="51.0" prefWidth="252.0" style="-fx-background-radius: 12;" text="Visualizza dati paziente" visible="false">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <Label layoutX="57.0" layoutY="33.0" text="Scegliere un'opzione:" visible="false" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="655.4">

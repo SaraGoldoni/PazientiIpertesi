@@ -28,6 +28,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class MedicoController implements Initializable{
+
     @FXML
     private Button A, B, C;
 
@@ -44,6 +45,7 @@ public class MedicoController implements Initializable{
 
     DatabaseConnection c = new DatabaseConnection();
     Connection conn = c.link();
+
 
     /**
      * Metodo per effettuare lo Switch alla pagina di inserimento di una nuova terapia per il paziente selezionato nella tabella.
@@ -68,9 +70,9 @@ public class MedicoController implements Initializable{
     /**
      * Switch alla pagina di modifica della terapia per il paziente selezionato
      * @param event, pressione del tasto modifica terapia
-     * @throws IOException
+     * @throws IOException, eccezione
      */
-    public void ModificaTerapia(ActionEvent event) throws IOException {
+    public void ModificaTerapia(ActionEvent event) throws IOException, SQLException, InterruptedException {
         String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ModTerapia.fxml"));
         Parent root = loader.load();
@@ -81,27 +83,33 @@ public class MedicoController implements Initializable{
         stage.setScene(scene);
         stage.show();
 
+
     }
 
     public void VisualizzaDati(ActionEvent event) throws IOException, SQLException, InterruptedException {
         String cfpaztab = tabPazienti.getSelectionModel().getSelectedItem().getCf();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("VisDati.fxml"));
         Parent root = loader.load();
         VisDatiController controller = loader.getController();
         controller.displayCF(cfpaztab);
-        controller.setInfoGenerali();
-        controller.inizializzaLista();
-        controller.inizilizzapatologiaPreg();
-        controller.inizilizzapatologiaConc();
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        //controller.inizializzapressioni();
+        controller.setInfoGenerali();
+        controller.inizializzaLista();
+        controller.inizilizzapatologiaPreg();
+        controller.inizilizzapatologiaConc();
+        controller.inizializzaallarmeTerapia();
         controller.inizializzasegnalazione();
         if(controller.inizializzapressioni()){
             controller.setIpertensione();
+            controller.pressioniSettimanali();
         }
+        controller.initializzaTabPressioni();
+
 
     }
 

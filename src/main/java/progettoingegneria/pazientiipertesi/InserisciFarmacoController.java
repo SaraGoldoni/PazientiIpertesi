@@ -34,7 +34,7 @@ public class InserisciFarmacoController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        String query = ("SELECT farmaco FROM pazientiipertesi.Terapia WHERE paziente = ?");
+        String query = ("SELECT farmaco, data_fine FROM pazientiipertesi.Terapia WHERE paziente = ? AND data_fine >= CURRENT_DATE");
 
         try (PreparedStatement pst = c.prepareStatement(query)) {
             String cf_paz_terapia = Controller.getCFPaziente();
@@ -59,26 +59,24 @@ public class InserisciFarmacoController implements Initializable {
      * @param event pressione del pulsante
      * @throws IOException
      */
-    public void InserisciFarmaco(ActionEvent event) throws SQLException, ParseException {
-        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?, ?)");
+    public void InserisciFarmaco(ActionEvent event) throws SQLException, IOException {
+        String queryfarmaco = ("INSERT INTO pazientiipertesi.rilevazionefarmaco VALUES(?, ?, ?, ?, ?, ?)");
         String NomeFarmaco = getFarmaco(event);
-        Time ora = Time.valueOf(OraFarmaco.getText());
-        //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dataAssunzione = new Date();
         java.sql.Date sqlDate = new java.sql.Date(dataAssunzione.getTime());
 
         int quantitaFarmaco = Integer.parseInt(quantita.getText());
         int NAssunzioni= Integer.parseInt(NumeroAssunzioni.getText());
 
-
-
         PreparedStatement stt = c.prepareStatement(queryfarmaco);
         stt.setString(1, NomeFarmaco.toLowerCase());
         stt.setInt(2, quantitaFarmaco);
         stt.setDate(3, sqlDate);
         stt.setInt(4, NAssunzioni);
-        stt.setTime(5, ora);
+        stt.setString(5, Controller.getCFPaziente());
+        stt.setTime(6, Time.valueOf(OraFarmaco.getText()));
         stt.executeUpdate();
+        Controller.Switch("InserimentoFarmaco.fxml", event);
     }
     @FXML
     public void indietro(ActionEvent event) throws IOException {

@@ -39,18 +39,17 @@ public class RilevazionePressioneController {
 
             ControlliVari valore = new ControlliVari();
             String v  = valore.controlloPressione(pressioneMassima,pressioneMinima);
+            if(!v.equals("ERRORE")){
+                pstmt.setInt(1, pressioneMassima);
+                pstmt.setInt(2, pressioneMinima);
+                pstmt.setDate(3, sqlDate);
+                pstmt.setString(4, Controller.getCFPaziente());
+                pstmt.setString(5, v);
+                pstmt.executeUpdate();
+                c.commit();
+                Controller.Switch("Paziente.fxml",event);
+            }
 
-
-            pstmt.setInt(1, pressioneMassima);
-            pstmt.setInt(2, pressioneMinima);
-            pstmt.setDate(3, sqlDate);
-            pstmt.setString(4, Controller.getCFPaziente());
-            pstmt.setString(5, v);
-            pstmt.executeUpdate();
-            c.commit();
-
-
-            Controller.Switch("Paziente.fxml",event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

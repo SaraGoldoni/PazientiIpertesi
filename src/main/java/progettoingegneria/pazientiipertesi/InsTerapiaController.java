@@ -69,5 +69,10 @@ public class InsTerapiaController {
         }
     }
 
+    @FXML
+    public void indietroalmedico(ActionEvent event) throws IOException {
+        Controller.Switch("Medico.fxml", event);
+    }
+
 
 }
