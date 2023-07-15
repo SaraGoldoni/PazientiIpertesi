@@ -2,10 +2,7 @@ package progettoingegneria.pazientiipertesi;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -51,6 +48,7 @@ public class InsTerapiaController {
             data_I = d_inizio.getValue().toString();
             data_F = d_fine.getValue().toString();
 
+        if(d_fine.getValue().isAfter(d_inizio.getValue())){
             prst.setString(1, F.toLowerCase());
             prst.setString(2, codiceFisc.getText());
             prst.setString(3, M);
@@ -64,6 +62,12 @@ public class InsTerapiaController {
 
             conn.commit();
             Controller.Switch("Medico.fxml",event);
+        }else{
+            Alert al = new Alert(Alert.AlertType.ERROR);
+            al.setContentText("La data di fine inserita\n è antecedente alla data di inizio");
+            al.show();
+        }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettoingegneria.pazientiipertesi.ModTerapiaController">
    <children>
-      <ChoiceBox fx:id="selterapia" layoutX="405.0" layoutY="194.0" onMouseClicked="#inizializzaTerapiaToMod" onMousePressed="#fill" prefHeight="32.0" prefWidth="238.0" />
+      <ChoiceBox fx:id="selterapia" layoutX="405.0" layoutY="194.0"  onMousePressed="#fill" prefHeight="32.0" prefWidth="238.0" />
       <Label layoutX="66.0" layoutY="138.0" prefHeight="30.0" prefWidth="224.0" text="Paziente:">
          <font>
             <Font size="18.0" />

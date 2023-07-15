@@ -37,6 +37,9 @@ public class PatologieTerapieController implements Initializable {
 
             ps.executeUpdate();
             c.commit();
+            Controller.Switch("PatologieTerapie.fxml", event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -60,21 +63,27 @@ public class PatologieTerapieController implements Initializable {
             String TipoTerapia=getTerapia(event);
             String DataTerInizio = TerapiaDataInizio.getValue().toString();
             String InfoT = InfoTerapia.getText();
-
-            ps.setString(1, FarmacoTer);
-            ps.setString(2, TipoTerapia);
-            if (TipoTerapia.equals("Concomitante")) {
-                ps.setNull(4, Types.NULL);
-            } else {
-                String DataTerFine = TerapiaDataFine.getValue().toString();
+            String DataTerFine = TerapiaDataFine.getValue().toString();
+            if(TerapiaDataFine.getValue().isAfter(TerapiaDataInizio.getValue())){
+                ps.setString(1, FarmacoTer);
+                ps.setString(2, TipoTerapia);
                 ps.setDate(4, Date.valueOf(DataTerFine));
-            }
-            ps.setDate(3, Date.valueOf(DataTerInizio));
-            ps.setString(5, InfoT);
-            ps.setString(6, cf_paz_sintomo);
+                ps.setDate(3, Date.valueOf(DataTerInizio));
+                ps.setString(5, InfoT);
+                ps.setString(6, cf_paz_sintomo);
 
-            ps.executeUpdate();
-            c.commit();
+                ps.executeUpdate();
+                c.commit();
+                Controller.Switch("PatologieTerapie.fxml", event);
+            }else{
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setContentText("La data di fine inserita\n è antecedente alla data di inizio");
+                al.show();
+            }
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     public void indietro(ActionEvent event) throws IOException {

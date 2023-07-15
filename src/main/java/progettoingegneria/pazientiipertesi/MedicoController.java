@@ -109,7 +109,8 @@ public class MedicoController implements Initializable{
             controller.pressioniSettimanali();
         }
         controller.initializzaTabPressioni();
-
+        controller.inizializzaTabellaTerapie();
+        controller.inizializzaTabellaTerapieAltro();
 
     }
 

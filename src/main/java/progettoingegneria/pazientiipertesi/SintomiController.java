@@ -26,7 +26,7 @@ public class SintomiController {
      * @throws SQLException
      */
     @FXML
-    public void InsertSintomo() throws SQLException {
+    public void InsertSintomo(ActionEvent event) throws SQLException, IOException {
         String querySintomo = ("INSERT INTO pazientiipertesi.sintomo(Paziente, nomesintomo, data, descrizione) VALUES (?, ?, ?, ?)");
         try (PreparedStatement ps = c.prepareStatement(querySintomo)) {
             c.setAutoCommit(false);
@@ -42,6 +42,7 @@ public class SintomiController {
 
             ps.executeUpdate();
             c.commit();
+            Controller.Switch("Sintomi.fxml", event);
         }
     }
     public void indietro(ActionEvent event) throws IOException {

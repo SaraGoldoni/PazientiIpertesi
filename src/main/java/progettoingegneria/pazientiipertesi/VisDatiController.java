@@ -72,6 +72,7 @@ public void inserisciFattoriRischio() throws SQLException, IOException {
     c.commit();
 
     listafattoririschio.getItems().add(nomefattore.getText());
+    listafattoririschio.refresh();
     nomefattore.clear();
 
 }
@@ -153,7 +154,7 @@ public void inizializzadescrizioneConcomitante() throws SQLException {
     @FXML
     public void modificaDescrizionePatologiePregresse() throws SQLException {
         String patpre = listapatologiepregresse.getSelectionModel().getSelectedItem();
-        String query1 = ("update pazientiipertesi.anamnesipatologie set informazioni=?, WHERE paziente = ? AND tipo = 'Pregressa' AND nomepatologia= ?");
+        String query1 = ("update pazientiipertesi.anamnesipatologie set informazioni=? WHERE paziente = ? AND tipo = 'Pregressa' AND nomepatologia= ?");
         String query2= ("INSERT INTO pazientiipertesi.modifica(paziente, medico, patologia, dataModifica) VALUES (?,?,?,?)");
         Date data = new Date();
         java.sql.Date sqlDate = new java.sql.Date(data.getTime());
@@ -163,6 +164,8 @@ public void inizializzadescrizioneConcomitante() throws SQLException {
         ps.setString(2, codicefiscale.getText());
         ps.setString(3, patpre);
         ps.executeUpdate();
+        c.commit();
+        c.setAutoCommit(false);
         PreparedStatement p2 = c.prepareStatement(query2);
         p2.setString(1, codicefiscale.getText());
         p2.setString(2, Controller.getCFMedico());
@@ -215,6 +218,7 @@ public void inizializzasegnalazione() throws SQLException {
 public void eliminaFattore() throws SQLException{
         int i = listafattoririschio.getSelectionModel().getSelectedIndex();
         fattoririschio.remove(i);
+
         String query = ("DELETE FROM pazientiipertesi.fattorerischio WHERE nome = ? AND paziente = ?");
         c.setAutoCommit(false);
         PreparedStatement p = c.prepareStatement(query);
@@ -344,8 +348,110 @@ public void pressioniSettimanali() throws SQLException {
         tabpressioni.getItems().setAll(pressioni);
 
     }
+    @FXML
+    private TableView<Terapie> tabellaTerapie;
+@FXML
+    private TableColumn<Terapie, String> farmaco;
+@FXML
+    private TableColumn<Terapie, Integer> ass;
+    @FXML
+    private TableColumn<Terapie, Integer> quantita;
+    @FXML
+    private TableColumn<Terapie, Date> data_inizio;
+    @FXML
+    private TableColumn<Terapie, Date> data_fine;
+    @FXML
+    private TableColumn<Terapie, String> medico;
+public void inizializzaTabellaTerapie() {
+    String query = ("SELECT * FROM pazientiipertesi.Terapia WHERE paziente = ?");
+    ObservableList<Terapie> terapie = FXCollections.observableArrayList();
 
+    try {
+        PreparedStatement stm = c.prepareStatement(query);
+        c.setAutoCommit(false);
+        stm.setString(1, codicefiscale.getText());
+        ResultSet rs;
+        rs = stm.executeQuery();
+        c.commit();
+        while (rs.next()) {
+            Terapie T = new Terapie(rs.getString(1), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getDate(7), rs.getDate(8));
+            terapie.add(T);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+    farmaco.setCellValueFactory(new PropertyValueFactory<>("Farmaco"));
+    ass.setCellValueFactory(new PropertyValueFactory<>("assunzioni"));
+    quantita.setCellValueFactory(new PropertyValueFactory<>("quantita"));
+    data_inizio.setCellValueFactory(new PropertyValueFactory<>("Data_inizio"));
+    data_fine.setCellValueFactory(new PropertyValueFactory<>("Data_fine"));
+    medico.setCellValueFactory(new PropertyValueFactory<>("Medico"));
+
+    tabellaTerapie.getItems().addAll(terapie);
+}
+    @FXML
+    private TableView<TerapiePregConc> tabellaTerapieAltro;
+    @FXML
+    private TableColumn<TerapiePregConc, String> farmacoAltro;
+    @FXML
+    private TableColumn<TerapiePregConc, String> tipoAltro;
+    @FXML
+    private TableColumn<TerapiePregConc, Date> DataInizioAltro;
+    @FXML
+    private TableColumn<TerapiePregConc, Date> DataFineAltro;
+    @FXML
+    private TableColumn<TerapiePregConc, String> InfoAltro;
+    public void inizializzaTabellaTerapieAltro() {
+        String query = ("SELECT * FROM pazientiipertesi.AnamnesiTerapie WHERE paziente = ?");
+        ObservableList<TerapiePregConc> terapieAB = FXCollections.observableArrayList();
+
+        try {
+            PreparedStatement stm = c.prepareStatement(query);
+            c.setAutoCommit(false);
+            stm.setString(1, codicefiscale.getText());
+            ResultSet rs;
+            rs = stm.executeQuery();
+            c.commit();
+            while (rs.next()) {
+                TerapiePregConc ta = new TerapiePregConc(rs.getString(1), rs.getString(2), rs.getString(5), rs.getString(6), rs.getDate(3), rs.getDate(4));
+                terapieAB.add(ta);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        farmacoAltro.setCellValueFactory(new PropertyValueFactory<>("nomefarmaco"));
+        tipoAltro.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        DataInizioAltro.setCellValueFactory(new PropertyValueFactory<>("Data_inizio"));
+        DataFineAltro.setCellValueFactory(new PropertyValueFactory<>("Data_fine"));
+        InfoAltro.setCellValueFactory(new PropertyValueFactory<>("informazioni"));
+
+        tabellaTerapieAltro.getItems().addAll(terapieAB);
+    }
     /*
+ String query = "SELECT * FROM pazientiipertesi.paziente ORDER BY nome, cognome";
+        ObservableList<Paziente> pazienti = FXCollections.observableArrayList();
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(query);
+            ResultSet rs;
+            rs = stm.executeQuery();
+            while (rs.next()){
+                Paziente A = new Paziente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+                pazienti.add(A);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        CF.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        Nome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        Cognome.setCellValueFactory(new PropertyValueFactory<>("Cognome"));
+        referente.setCellValueFactory(new PropertyValueFactory<>("Referente"));
+
+        tabPazienti.getItems().setAll(pazienti);
+
+
+    }
 
     */
 }
