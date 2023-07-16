@@ -117,29 +117,35 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabellaTerapie" layoutX="14.0" layoutY="43.0" prefHeight="274.0" prefWidth="822.0">
+                        <TableView fx:id="tabellaTerapie" layoutX="14.0" layoutY="43.0" prefHeight="274.0" prefWidth="822.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="22.0">
                           <columns>
-                            <TableColumn fx:id="farmaco" prefWidth="183.20004558563232" text="Farmaco" />
-                            <TableColumn fx:id="ass" prefWidth="83.99992370605469" text="Assunzioni" />
-                              <TableColumn fx:id="quantita" text="Quantità" />
-                              <TableColumn fx:id="data_inizio" prefWidth="154.4000244140625" text="Data di inizio" />
-                              <TableColumn fx:id="data_fine" prefWidth="128.79998779296875" text="Data di fine" />
-                              <TableColumn fx:id="medico" prefWidth="193.5999755859375" text="Medico" />
+                            <TableColumn fx:id="farmaco" editable="false" minWidth="-Infinity" prefWidth="183.20004558563232" text="Farmaco" />
+                            <TableColumn fx:id="ass" editable="false" minWidth="-Infinity" prefWidth="83.99992370605469" text="Assunzioni" />
+                              <TableColumn fx:id="quantita" editable="false" minWidth="-Infinity" text="Quantità" />
+                              <TableColumn fx:id="data_inizio" editable="false" minWidth="-Infinity" prefWidth="154.4000244140625" text="Data di inizio" />
+                              <TableColumn fx:id="data_fine" editable="false" minWidth="-Infinity" prefWidth="128.79998779296875" text="Data di fine" />
+                              <TableColumn fx:id="medico" editable="false" minWidth="-Infinity" prefWidth="193.5999755859375" text="Medico" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                         <Label layoutX="14.0" layoutY="14.0" text="Terapie per ipertensione:">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tabellaTerapieAltro" layoutX="13.0" layoutY="352.0" prefHeight="286.0" prefWidth="826.0">
+                        <TableView fx:id="tabellaTerapieAltro" layoutX="13.0" layoutY="352.0" prefHeight="286.0" prefWidth="826.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="19.0">
                           <columns>
-                            <TableColumn fx:id="farmacoAltro" prefWidth="183.20004558563232" text="Farmaco" />
-                            <TableColumn fx:id="tipoAltro" prefWidth="151.99998474121094" text="Tipo" />
-                              <TableColumn fx:id="DataInizioAltro" minWidth="0.0" prefWidth="163.20001220703125" text="Data di inizio" />
-                              <TableColumn fx:id="DataFineAltro" prefWidth="157.60003662109375" text="Data di fine" />
-                              <TableColumn fx:id="InfoAltro" prefWidth="167.19989013671875" text="Informazioni" />
+                            <TableColumn fx:id="farmacoAltro" editable="false" minWidth="-Infinity" prefWidth="183.20004558563232" text="Farmaco" />
+                            <TableColumn fx:id="tipoAltro" editable="false" minWidth="-Infinity" prefWidth="151.99998474121094" text="Tipo" />
+                              <TableColumn fx:id="DataInizioAltro" editable="false" minWidth="-Infinity" prefWidth="163.20001220703125" text="Data di inizio" />
+                              <TableColumn fx:id="DataFineAltro" editable="false" minWidth="-Infinity" prefWidth="160.0" text="Data di fine" />
+                              <TableColumn fx:id="InfoAltro" editable="false" minWidth="-Infinity" prefWidth="165.5999755859375" text="Informazioni" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                         <Label layoutX="13.0" layoutY="326.0" prefHeight="22.0" prefWidth="171.0" text="Altre terapie:">
                            <font>

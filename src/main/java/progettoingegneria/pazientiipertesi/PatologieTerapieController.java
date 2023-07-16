@@ -28,7 +28,7 @@ public class PatologieTerapieController implements Initializable {
             String cf_paz_sintomo = Controller.getCFPaziente();
             String Pat = patologia.getText();
             String InfoPat = PatInformazioni.getText();
-            String TipoPatologia=getPatologia(event);
+            String TipoPatologia = getPatologia(event);
 
             ps.setString(1, Pat);
             ps.setString(2, TipoPatologia);
@@ -60,32 +60,54 @@ public class PatologieTerapieController implements Initializable {
             c.setAutoCommit(false);
             String cf_paz_sintomo = Controller.getCFPaziente();
             String FarmacoTer = FarmacoTerapia.getText();
-            String TipoTerapia=getTerapia(event);
+            String TipoTerapia = getTerapia(event);
             String DataTerInizio = TerapiaDataInizio.getValue().toString();
             String InfoT = InfoTerapia.getText();
-            String DataTerFine = TerapiaDataFine.getValue().toString();
-            if(TerapiaDataFine.getValue().isAfter(TerapiaDataInizio.getValue())){
-                ps.setString(1, FarmacoTer);
-                ps.setString(2, TipoTerapia);
-                ps.setDate(4, Date.valueOf(DataTerFine));
-                ps.setDate(3, Date.valueOf(DataTerInizio));
-                ps.setString(5, InfoT);
-                ps.setString(6, cf_paz_sintomo);
 
+
+            ps.setString(1, FarmacoTer);
+            ps.setString(2, TipoTerapia);
+            ps.setDate(3, Date.valueOf(DataTerInizio));
+            ps.setString(5, InfoT);
+            ps.setString(6, cf_paz_sintomo);
+            if (TipoTerapia.equals("Concomitante") && TerapiaDataFine.getValue()!=null) {
+                ps.setDate(4, java.sql.Date.valueOf(TerapiaDataFine.getValue().toString()));
+                if (TerapiaDataFine.getValue().isAfter(TerapiaDataInizio.getValue()) ) {
+                    ps.executeUpdate();
+                    c.commit();
+                    Controller.Switch("PatologieTerapie.fxml", event);
+                }else{
+                    Alert al = new Alert(Alert.AlertType.ERROR);
+                    al.setContentText("La data di fine inserita\n è antecedente alla data di inizio");
+                    al.show();
+                }
+            }else if (TipoTerapia.equals("Concomitante") && TerapiaDataFine.getValue()==null) {
+                ps.setNull(4, Types.NULL);
                 ps.executeUpdate();
                 c.commit();
                 Controller.Switch("PatologieTerapie.fxml", event);
-            }else{
-                Alert al = new Alert(Alert.AlertType.ERROR);
-                al.setContentText("La data di fine inserita\n è antecedente alla data di inizio");
-                al.show();
+            }
+            if(TipoTerapia.equals("Pregressa") && TerapiaDataFine.getValue() != null){
+                ps.setDate(4, Date.valueOf(TerapiaDataFine.getValue().toString()));
+                if (TerapiaDataFine.getValue().isAfter(TerapiaDataInizio.getValue()) ) {
+                    ps.executeUpdate();
+                    c.commit();
+                    Controller.Switch("PatologieTerapie.fxml", event);
+                }
+            } else if (TipoTerapia.equals("Pregressa") && TerapiaDataFine.getValue() == null) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Devi inserire la data di fine terapia");
+            a.show();
             }
 
+    } catch(
+    IOException e)
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    {
+        throw new RuntimeException(e);
     }
+
+}
     public void indietro(ActionEvent event) throws IOException {
         Controller.Switch("Paziente.fxml", event);
     }

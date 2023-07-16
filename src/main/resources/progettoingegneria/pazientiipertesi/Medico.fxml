@@ -11,8 +11,8 @@
    <children>
       <TableView fx:id="tabPazienti" layoutX="135.0" layoutY="33.0" onMouseClicked="#Visibile" prefHeight="466.0" prefWidth="680.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="134.0">
         <columns>
-            <TableColumn fx:id="CF" editable="false" minWidth="-Infinity" prefWidth="223.99998474121094" text="Codice fiscale" />
-          <TableColumn fx:id="Nome" editable="false" minWidth="-Infinity" prefWidth="118.4000244140625" text="Nome" />
+            <TableColumn fx:id="CF" editable="false" minWidth="-Infinity" prefWidth="207.199951171875" text="Codice fiscale" />
+          <TableColumn fx:id="Nome" editable="false" minWidth="-Infinity" prefWidth="132.800048828125" text="Nome" />
           <TableColumn fx:id="Cognome" editable="false" minWidth="-Infinity" prefWidth="139.20004272460938" text="Cognome" />
             <TableColumn fx:id="referente" editable="false" minWidth="-Infinity" prefWidth="216.0" text="Referente" />
         </columns>
