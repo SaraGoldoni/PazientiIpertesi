@@ -44,7 +44,7 @@ public class ModTerapiaController {
     public String getFarmaco(){
         return selterapia.getValue();
     }
-    public void ModificaTerapia(ActionEvent event) throws SQLException {
+    public void ModificaTerapia(ActionEvent event) throws SQLException, IOException {
        String query2= "UPDATE pazientiipertesi.Terapia SET farmaco = ?, paziente = ?, medico = ?, assunzioni = ?, quantità =?, indicazioni = ?, data_inizio=?, data_fine=? WHERE ((Paziente = ?) AND (farmaco = ?))";
 
        PreparedStatement p = c.prepareStatement(query2);
@@ -61,9 +61,8 @@ public class ModTerapiaController {
         p.setString(9, cfpaz.getText());
         p.setString(10, getFarmaco());
         p.executeUpdate();
-
-
         c.commit();
+        Controller.Switch("Medico.fxml", event);
     }else{
         Alert al = new Alert(Alert.AlertType.ERROR);
         al.setContentText("La data di fine inserita\n è antecedente alla data di inizio");

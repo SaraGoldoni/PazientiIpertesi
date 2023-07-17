@@ -245,6 +245,26 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Rilevazione farmaco">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tabRilevazioneFarmaco" layoutX="70.0" layoutY="74.0" prefHeight="428.0" prefWidth="718.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+                          <columns>
+                            <TableColumn fx:id="farmacoGiornaliero" minWidth="-Infinity" prefWidth="150.3999900817871" text="Farmaco" />
+                            <TableColumn fx:id="quantitaGiornaliera" minWidth="-Infinity" prefWidth="183.2000274658203" text="Quantità" />
+                              <TableColumn fx:id="assunzioneGiornaliera" minWidth="-Infinity" prefWidth="139.20001220703125" text="Assunzioni" />
+                              <TableColumn fx:id="dataAssunzione" minWidth="-Infinity" prefWidth="143.20001220703125" text="Data di assunzione" />
+                              <TableColumn fx:id="oraAssunzione" minWidth="-Infinity" prefWidth="99.19998779296873" text="Ora" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
