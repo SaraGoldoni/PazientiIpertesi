@@ -2,6 +2,7 @@ package progettoingegneria.pazientiipertesi;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -50,11 +51,17 @@ public class ResponsabileMedicoController {
         ps3.setInt(3, 1);
         ps3.setNull(4, Types.NULL);
         ps3.setString(5, CF_med.toUpperCase());
+        if(CF_med.length()==16){
+            ps1.executeUpdate();
+            ps3.executeUpdate();
+            c.commit();
+            Controller.Switch("ResponsabileMedico.fxml",event);
+        }else{
+            Alert a =new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Il codice fiscale deve essere di 16 caratteri");
+            a.show();
+        }
 
-        ps1.executeUpdate();
-        ps3.executeUpdate();
-        c.commit();
-        Controller.Switch("ResponsabileMedico.fxml",event);
     }
     public void turnBack(ActionEvent event) throws IOException {
         Controller.Switch("Responsabile.fxml", event);
